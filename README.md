@@ -17,15 +17,20 @@ gh auth login
 # 4. Clone this repo
 git clone git@github.com:towm1204/dotfiles.git ~/dotfiles
 
-# 5. Run install script (symlinks configs, installs brew packages, sets up python)
+# 5. Install oh-my-zsh (needed before install.sh symlinks .zshrc)
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# 6. Install zsh-autosuggestions plugin
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+# 7. Run install script (symlinks configs, installs brew packages, sets up python)
 cd ~/dotfiles && ./install.sh
 ```
 
 ## After install
 
 - Restart your shell
-- Install oh-my-zsh: https://ohmyz.sh/#install
-- Install zsh-autosuggestions plugin: `git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions`
+- Install Claude Code: `npm install -g @anthropic-ai/claude-code`
 
 ## Updating configs
 
