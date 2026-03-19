@@ -39,3 +39,14 @@ Files are symlinked, so editing e.g. `~/.zshrc` directly edits `~/dotfiles/zsh/.
 ```bash
 cd ~/dotfiles && git add -A && git commit -m "update" && git push
 ```
+
+## Manual maintenance
+
+These don't auto-sync — update when needed:
+
+- **Brewfile** — after installing/removing a brew package:
+  ```bash
+  cd ~/dotfiles && brew bundle dump --file=Brewfile --force && git add Brewfile && git commit -m "Update Brewfile" && git push
+  ```
+- **New config files** — if you start tracking a new tool's config, copy it into `~/dotfiles/`, add a `link` line to `install.sh`, then run `install.sh`
+- **Python version** — if you change pyenv global version, update the version in `install.sh`
