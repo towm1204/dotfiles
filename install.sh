@@ -32,7 +32,7 @@ link "$DOTFILES_DIR/git/.gitconfig" "$HOME/.gitconfig"
 # Homebrew
 if command -v brew &>/dev/null; then
     echo "  Installing Homebrew packages..."
-    brew bundle --file="$DOTFILES_DIR/Brewfile" --no-lock
+    brew bundle --file="$DOTFILES_DIR/Brewfile"
 else
     echo "  Homebrew not found. Install from https://brew.sh then re-run."
 fi
