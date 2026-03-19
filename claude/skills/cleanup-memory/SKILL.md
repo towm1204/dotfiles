@@ -46,6 +46,8 @@ After all files, show cross-file redundancy findings if any.
 
 Then propose a concrete trimmed version of each file with a summary: **X lines → Y lines**.
 
+**Stop condition**: If all findings across all files are Low severity, report "Files are clean — no changes recommended" and skip proposing trimmed versions.
+
 ## Rules
 
 - Wait for user approval before making any edits
