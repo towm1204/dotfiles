@@ -20,8 +20,7 @@ link() {
 # Claude Code
 link "$DOTFILES_DIR/claude/CLAUDE.md" "$HOME/.claude/CLAUDE.md"
 link "$DOTFILES_DIR/claude/settings.json" "$HOME/.claude/settings.json"
-link "$DOTFILES_DIR/claude/skills/cleanup-memory/SKILL.md" "$HOME/.claude/skills/cleanup-memory/SKILL.md"
-link "$DOTFILES_DIR/claude/skills/remember/SKILL.md" "$HOME/.claude/skills/remember/SKILL.md"
+link "$DOTFILES_DIR/claude/skills" "$HOME/.claude/skills"
 
 # Zsh
 link "$DOTFILES_DIR/zsh/.zshrc" "$HOME/.zshrc"
