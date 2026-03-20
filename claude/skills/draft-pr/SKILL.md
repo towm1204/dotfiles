@@ -14,6 +14,6 @@ $ARGUMENTS format: `{prefix}: {title}` (e.g. `Dwolla KYC: Add kyc_business_custo
 2. Parse $ARGUMENTS: prefix is before `:`, title is after.
 3. PR title: `[{prefix}] {title}`
 4. `git diff master...HEAD` to understand changes.
-5. Write a very concise bullet-point summary. Use "TSIA" if changes are obvious from the title. Each bullet max 1 sentence.
+5. Write a very concise bullet-point summary. Use "TSIA" if changes are obvious from the title. Each bullet max 1 sentence. Prefer fewer bullets — don't split one logical change into multiple bullets.
 6. Create draft PR with `gh pr create --draft`. Never include "Generated with Claude Code" or any AI attribution.
 7. Return the PR URL.
