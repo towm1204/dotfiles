@@ -10,6 +10,7 @@ Commit all uncommitted changes in the current branch. If $ARGUMENTS is provided,
 2. Stage relevant files by name (not `git add -A`). Ask user which files if ambiguous.
 3. Write a concise commit message.
 4. Run `git commit` (never --no-verify).
+5. After successful commit, `git push` to remote (set upstream with `-u` if needed).
 
 ## Pre-commit hook handling
 
