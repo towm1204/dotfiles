@@ -13,6 +13,10 @@
 - Don't blindly trust existing code patterns — understand impact of changes
 - For widely-used/common components: don't need to audit every usage, but consider what can break
 
+## Git & PRs
+- Branch naming: `tow/short-change-name`
+- PR descriptions: single short bullet preferred. Don't over-describe but don't use "TSIA" either.
+
 ## Memory management
 
 **Proactive learning — after completing any task, check if any of these occurred:**
