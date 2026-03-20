@@ -12,13 +12,13 @@
         ]
       }
     ],
-    "PostToolUse": [
+    "Stop": [
       {
-        "matcher": "Write|Edit",
+        "matcher": "",
         "hooks": [
           {
             "type": "command",
-            "command": "jq -r '.tool_input.file_path // .tool_response.filePath' | { read -r f; case \"$f\" in /Users/tow-cfp/.claude/*|/Users/tow-cfp/dotfiles/*) rel=$(git -C /Users/tow-cfp/dotfiles ls-files --others --modified -- . 2>/dev/null | head -1); if [ -z \"$rel\" ]; then rel=$(basename \"$f\"); fi; git -C /Users/tow-cfp/dotfiles add -A && git -C /Users/tow-cfp/dotfiles diff --cached --quiet || (git -C /Users/tow-cfp/dotfiles commit -m \"update ${rel}\" && git -C /Users/tow-cfp/dotfiles push && echo '{\"systemMessage\":\"dotfiles: committed & pushed '\"${rel}\"'\"}') ;; esac; } 2>/dev/null || true"
+            "command": "~/dotfiles/claude/dotfile-commit.sh 2>/dev/null &"
           }
         ]
       }
