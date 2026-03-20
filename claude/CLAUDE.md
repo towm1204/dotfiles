@@ -15,6 +15,7 @@
 
 ## Git & PRs
 - Branch naming: `tow/short-change-name`
+- Commit messages: single line only, no body
 - PR descriptions: single short bullet preferred. Don't over-describe but don't use "TSIA" either.
 
 ## Memory management
