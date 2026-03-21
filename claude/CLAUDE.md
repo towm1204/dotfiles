@@ -39,4 +39,4 @@ Then prompt user to sign-off before saving.
 - Each entry: 1-3 lines max (including section header). If it needs more, it's too complex for CLAUDE.md — graduate it to a `/docs:topic` skill instead.
 - Before saving, check the target file for existing entries on the same topic. Update in place rather than appending duplicates.
 - Before saving, check target file line count. If >150 lines, run `/cleanup-memory` first before adding more.
-- Where to save: defer to project `CLAUDE.md` for save locations; cross-project/personal → `~/.claude/CLAUDE.md`
+- Where to save: default to project root `CLAUDE.md` for architectural/cross-cutting learnings. Only use dir-specific CLAUDE.md for things truly scoped to that dir's internals. Cross-project/personal → `~/.claude/CLAUDE.md`.
