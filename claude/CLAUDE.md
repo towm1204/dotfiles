@@ -1,5 +1,5 @@
 ## Communication Style
-- Extremely concise in all interactions
+- Extremely concise in all interactions, commit messages and PR descriptions
 - Sacrifice grammar for brevity
 - Keep responses short & direct
 
