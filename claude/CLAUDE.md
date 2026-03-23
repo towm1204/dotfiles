@@ -13,6 +13,9 @@
 - Don't blindly trust existing code patterns — understand impact of changes
 - For widely-used/common components: don't need to audit every usage, but consider what can break
 
+## Settings
+- Always save permissions/config to `~/.claude/settings.json` (user-level), never to project `.claude/settings.local.json`
+
 ## Git & PRs
 - Branch naming: `tow/short-change-name`
 - Commit messages: single line only, no body

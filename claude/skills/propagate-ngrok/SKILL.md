@@ -27,4 +27,4 @@ Propagate the current ngrok URL (for localhost:5001) to all places that need it.
    - For each **active** subscription with `ngrok` in the URL: `PATCH https://sandbox.increase.com/api/event_subscriptions/<id>` with `{"status": "disabled"}`
    - App startup will auto-create a new subscription with the updated URL.
 
-5. **Restart services** — run `make stop-all` then `make im-start-nb` (from repo root).
+5. **Do NOT restart services** — tell the user to restart manually (`make stop-all && make im-start-nb`).

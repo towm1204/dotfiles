@@ -28,5 +28,27 @@
     "type": "command",
     "command": "git branch --show-current 2>/dev/null | sed 's|.*/||'"
   },
-  "autoMemoryEnabled": false
+  "autoMemoryEnabled": false,
+  "permissions": {
+    "allow": [
+      "Bash(ls:*)",
+      "Bash(claude config get:*)",
+      "Bash(find:*)",
+      "Bash(grep:*)",
+      "Bash(mypy:*)",
+      "Bash(xargs cat:*)",
+      "Bash(pytest:*)",
+      "Bash(make:*)",
+      "Bash(python:*)",
+      "Bash(git:*)",
+      "Bash(docker ps:*)",
+      "Bash(curl -s http://localhost:4040/api/tunnels)",
+      "Bash(curl*https://api.hellosign.com/v3/account*)",
+      "Bash(curl*https://sandbox.increase.com/api/event_subscriptions*)",
+      "Read(//tmp/**)",
+      "Read(//Users/tow-cfp/.claude/**)",
+      "Read(//Users/tow-cfp/**)",
+      "Skill(update-config)"
+    ]
+  }
 }
