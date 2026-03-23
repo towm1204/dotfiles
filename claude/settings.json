@@ -39,7 +39,7 @@
       "Bash(xargs:*)",
       "Bash(pytest:*)",
       "Bash(make:*)",
-      "Bash(python:*)",
+      "Bash(python3 -c*increase*)",
       "Bash(git:*)",
       "Bash(docker ps:*)",
       "Bash(curl -s http://localhost:4040/api/tunnels)",
