@@ -36,7 +36,7 @@
       "Bash(find:*)",
       "Bash(grep:*)",
       "Bash(mypy:*)",
-      "Bash(xargs cat:*)",
+      "Bash(xargs:*)",
       "Bash(pytest:*)",
       "Bash(make:*)",
       "Bash(python:*)",
@@ -48,7 +48,17 @@
       "Read(//tmp/**)",
       "Read(//Users/tow-cfp/.claude/**)",
       "Read(//Users/tow-cfp/**)",
-      "Skill(update-config)"
+      "Skill(update-config)",
+      "Bash(yarn build:*)",
+      "Bash(yarn workspace:*)",
+      "Bash(tsc:*)",
+      "Bash(npx tsc:*)",
+      "Bash(gh pr:*)",
+      "mcp__github__get_pull_request",
+      "mcp__github__get_pull_request_files",
+      "Bash(DISABLE_ESLINT_PLUGIN=true GENERATE_SOURCEMAP=false tsc --noEmit)",
+      "Bash(REACT_APP_ENV=production DISABLE_ESLINT_PLUGIN=true GENERATE_SOURCEMAP=false npx vite build --mode production)",
+      "Bash(REACT_APP_ENV=development yarn build:portal)"
     ]
   }
 }
