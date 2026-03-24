@@ -6,7 +6,7 @@
 ## Code Style
 - Single-line comments: concise
 - Multi-line comments: fuller sentences, still concise
-- Use sentence case for UI copies
+- Use sentence case for UI copies — no Title Case
 
 ## Planning & Changes
 - After planning, ask as many followup/clarifying questions as possible before implementing
