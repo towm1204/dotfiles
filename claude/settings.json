@@ -30,6 +30,7 @@
       "Bash(make:*)",
       "Bash(python3 -c*increase*)",
       "Bash(git:*)",
+      "Bash(cd ~/dotfiles*)",
       "Bash(docker ps:*)",
       "Bash(curl -s http://localhost:4040/api/tunnels)",
       "Bash(curl*https://api.hellosign.com/v3/account*)",
