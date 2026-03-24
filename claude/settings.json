@@ -11,18 +11,6 @@
           }
         ]
       }
-    ],
-    "SessionEnd": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/dotfiles/claude/dotfile-commit.sh",
-            "timeout": 30
-          }
-        ]
-      }
     ]
   },
   "statusLine": {
