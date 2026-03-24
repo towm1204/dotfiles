@@ -11,7 +11,8 @@ Commit all uncommitted changes in the current branch. If $ARGUMENTS is provided,
 2. Stage relevant files by name (not `git add -A`). Ask user which files if ambiguous.
 3. Write the shortest possible single-line commit message (no body, no trailers, no Co-Authored-By). Pass directly with `-m "msg"`, never use HEREDOC.
 4. Run `git commit` (never --no-verify).
-5. After successful commit, `git push` to remote (set upstream with `-u` if needed).
+5. **NEVER push to master, staging, or release.** If on one of these branches, skip push and tell user to create a feature branch.
+6. After successful commit, `git push` to remote (set upstream with `-u` if needed).
 
 ## Pre-commit hook handling
 
