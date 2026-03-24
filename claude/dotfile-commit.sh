@@ -1,31 +1,34 @@
 #!/bin/bash
 # Auto-commit dotfile changes with semantic commit messages via haiku
-set -e
 
 DOTFILES_DIR="$HOME/dotfiles"
 cd "$DOTFILES_DIR"
 
 # Check for any changes (staged, unstaged, or untracked)
 if git diff --quiet && git diff --cached --quiet && [ -z "$(git ls-files --others --exclude-standard)" ]; then
+  echo '{"systemMessage":"[dotfile-commit] no changes"}'
   exit 0
 fi
 
-# Stage all changes
+echo '{"systemMessage":"[dotfile-commit] staging changes..."}'
 git add -A
 
 # Get the diff for commit message generation
 diff=$(git diff --cached --stat)
 files=$(git diff --cached --name-only)
 
-# Generate semantic commit message via haiku
-msg=$(echo "$diff" | claude -p --model haiku "Write a single-line git commit message for these dotfile changes. Files changed: $files. Be concise and semantic (e.g. 'add post-tool-use hook', 'adjust zsh aliases', 'remove old config'). No quotes, no period, lowercase. Just the message, nothing else.")
+msg="auto-commit dotfiles $(date '+%Y-%m-%d %H:%M')"
 
-# Fallback if claude fails
-if [ -z "$msg" ]; then
-  msg="update $(echo "$files" | head -1)"
+echo "{\"systemMessage\":\"[dotfile-commit] committing — $msg\"}"
+if ! git commit -m "$msg" 2>&1; then
+  echo '{"systemMessage":"[dotfile-commit] commit failed"}'
+  exit 1
 fi
 
-git commit -m "$msg"
-git push
+echo '{"systemMessage":"[dotfile-commit] pushing..."}'
+if ! git push 2>&1; then
+  echo '{"systemMessage":"[dotfile-commit] push failed"}'
+  exit 1
+fi
 
-echo "{\"systemMessage\":\"dotfiles: $msg\"}"
+echo "{\"systemMessage\":\"[dotfile-commit] done — $msg\"}"
