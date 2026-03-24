@@ -14,7 +14,7 @@
 - For widely-used/common components: don't need to audit every usage, but consider what can break
 
 ## Settings
-- Always save permissions/config to `~/.claude/settings.json` (user-level), never to project `.claude/settings.local.json`
+- **CRITICAL**: All settings changes go to `~/.claude/settings.json` (user-level). **NEVER** write to project `.claude/settings.local.json`. No exceptions.
 
 ## Git & PRs
 - Branch naming: `tow/short-change-name`
