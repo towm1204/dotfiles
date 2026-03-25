@@ -1,23 +1,4 @@
 {
-  "model": "opus",
-  "hooks": {
-    "Notification": [
-      {
-        "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "afplay /System/Library/Sounds/Glass.aiff"
-          }
-        ]
-      }
-    ]
-  },
-  "statusLine": {
-    "type": "command",
-    "command": "git branch --show-current 2>/dev/null | sed 's|.*/||'"
-  },
-  "autoMemoryEnabled": false,
   "permissions": {
     "allow": [
       "Bash(ls:*)",
@@ -50,5 +31,24 @@
       "Bash(REACT_APP_ENV=production DISABLE_ESLINT_PLUGIN=true GENERATE_SOURCEMAP=false npx vite build --mode production)",
       "Bash(REACT_APP_ENV=development yarn build:portal)"
     ]
-  }
+  },
+  "hooks": {
+    "Notification": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "afplay /System/Library/Sounds/Glass.aiff"
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "git branch --show-current 2>/dev/null | sed 's|.*/||'"
+  },
+  "autoMemoryEnabled": false,
+  "model": "opus[1m]"
 }
