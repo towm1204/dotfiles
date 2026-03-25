@@ -11,6 +11,7 @@
       "Bash(make:*)",
       "Bash(python3 -c*increase*)",
       "Bash(git:*)",
+      "Bash(SKIP='mypy' git commit:*)",
       "Bash(docker ps:*)",
       "Bash(curl -s http://localhost:4040/api/tunnels)",
       "Bash(curl*https://api.hellosign.com/v3/account*)",
@@ -45,6 +46,6 @@
     "type": "command",
     "command": "git branch --show-current 2>/dev/null | sed 's|.*/||'"
   },
-  "autoMemoryEnabled": false,
-  "model": "opus[1m]"
+  "effortLevel": "medium",
+  "autoMemoryEnabled": false
 }
