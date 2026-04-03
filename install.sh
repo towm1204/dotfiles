@@ -21,6 +21,7 @@ link() {
 link "$DOTFILES_DIR/claude/CLAUDE.md" "$HOME/.claude/CLAUDE.md"
 link "$DOTFILES_DIR/claude/settings.json" "$HOME/.claude/settings.json"
 link "$DOTFILES_DIR/claude/skills" "$HOME/.claude/skills"
+link "$DOTFILES_DIR/claude/agents" "$HOME/.claude/agents"
 
 # Zsh
 link "$DOTFILES_DIR/zsh/.zshrc" "$HOME/.zshrc"

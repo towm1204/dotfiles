@@ -26,12 +26,11 @@ Propagate the current ngrok URL (for localhost:5001) to all places that need it.
    ```python
    from increase import Increase
    client = Increase(api_key="<INCREASE_API_KEY>", environment="sandbox")
-   # Delete all active subscriptions
+   # Disable all active subscriptions (Increase SDK has no delete — disable is the only option)
    for sub in client.event_subscriptions.list().data:
        if sub.status == "active":
            client.event_subscriptions.update(sub.id, status="disabled")
-           client.event_subscriptions.delete(sub.id)
-           print(f"Deleted {sub.id}")
+           print(f"Disabled {sub.id}")
    # Create new subscription with updated URL
    res = client.event_subscriptions.create(
        url="<ngrok_url>/v1/webhooks/increase-callback",

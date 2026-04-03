@@ -14,7 +14,14 @@
 - For widely-used/common components: don't need to audit every usage, but consider what can break
 
 ## Settings
-- **CRITICAL**: All settings changes go to `~/.claude/settings.json` (user-level). **NEVER** write to project `.claude/settings.local.json`. No exceptions.
+- **CRITICAL**: All settings and permission settings go to `~/.claude/settings.json` (user-level) no exceptions and never save to `.claude/settings.local.json`
+
+## File Navigation & Research
+- Don't search for files via text search — ask where things are if unsure
+- If grep is taking >~20 seconds, ask instead
+- Use imports/usage for context; if that's also taking >~20 seconds, ask instead
+- Reference existing examples when implementing/planning — don't invent new patterns or syntax
+- Ask what to reference if unclear
 
 ## Git & PRs
 - Branch naming: `tow/short-change-name`

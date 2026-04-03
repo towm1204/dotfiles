@@ -8,6 +8,7 @@
       "Bash(mypy:*)",
       "Bash(xargs:*)",
       "Bash(pytest:*)",
+      "Bash(python -m pytest:*)",
       "Bash(make:*)",
       "Bash(python3 -c*increase*)",
       "Bash(git:*)",
@@ -46,5 +47,7 @@
     "type": "command",
     "command": "git branch --show-current 2>/dev/null | sed 's|.*/||'"
   },
-  "autoMemoryEnabled": false
+  "autoMemoryEnabled": false,
+  "autoDreamEnabled": false,
+  "model": "opus[1m]"
 }
