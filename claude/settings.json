@@ -10,7 +10,7 @@
       "Bash(pytest:*)",
       "Bash(python -m pytest:*)",
       "Bash(make:*)",
-      "Bash(python3 -c*increase*)",
+      "Bash(python3*rotate-increase-sub.py*)",
       "Bash(git:*)",
       "Bash(SKIP='mypy' git commit:*)",
       "Bash(docker ps:*)",

@@ -22,21 +22,9 @@ Propagate the current ngrok URL (for localhost:5001) to all places that need it.
    ```
    Log the response status.
 
-4. **Rotate Increase subscription** — read `INCREASE_API_KEY` and `INCREASE_WEBHOOK_SECRET` from `.flaskenv`, then run a Python script using the Increase SDK:
-   ```python
-   from increase import Increase
-   client = Increase(api_key="<INCREASE_API_KEY>", environment="sandbox")
-   # Disable all active subscriptions (Increase SDK has no delete — disable is the only option)
-   for sub in client.event_subscriptions.list().data:
-       if sub.status == "active":
-           client.event_subscriptions.update(sub.id, status="disabled")
-           print(f"Disabled {sub.id}")
-   # Create new subscription with updated URL
-   res = client.event_subscriptions.create(
-       url="<ngrok_url>/v1/webhooks/increase-callback",
-       shared_secret="<INCREASE_WEBHOOK_SECRET>",
-   )
-   print(f"Created {res.id}")
+4. **Rotate Increase subscription** — read `INCREASE_API_KEY` and `INCREASE_WEBHOOK_SECRET` from `.flaskenv`, then run the script in this skill's directory:
+   ```
+   python3 ~/.claude/skills/propagate-ngrok/rotate-increase-sub.py <ngrok_url> <INCREASE_API_KEY> <INCREASE_WEBHOOK_SECRET>
    ```
 
 5. **Do NOT restart services** — tell the user to restart manually (`make stop-all && make im-start-nb`).

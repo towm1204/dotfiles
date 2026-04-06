@@ -27,3 +27,4 @@
 - Branch naming: `tow/short-change-name`
 - Commit messages: single line only, no body
 - PR descriptions: single short bullet preferred. Don't over-describe but don't use "TSIA" either.
+- When a PR exists for the current branch, load the PR title, description, and diff into context before starting any task
