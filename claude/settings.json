@@ -47,7 +47,8 @@
     "type": "command",
     "command": "git branch --show-current 2>/dev/null | sed 's|.*/||'"
   },
+  "effortLevel": "medium",
   "autoMemoryEnabled": false,
   "autoDreamEnabled": false,
-  "model": "opus[1m]"
+  "showClearContextOnPlanAccept": true
 }

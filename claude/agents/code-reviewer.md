@@ -35,7 +35,7 @@ Rate each issue 0–100. **Only report issues with confidence >= 80.**
 - **90+**: Confirmed issue that will be hit in practice
 - **100**: Certain — evidence directly confirms this
 
-## Output Format
+## Output Format (required)
 
 Report by severity: **Critical** (must fix — blocks deployment or breaks functionality) and **Important** (should fix — impacts correctness or security).
 
@@ -45,4 +45,4 @@ If no high-confidence issues are found, confirm correctness with a brief summary
 
 ## Completed Reviews
 
-Write reviews to `~/dev/ai/reviews/{org}/{repo}/{issue-or-pr-or-branch-name-or-plan-slug}.md`
+Write reviews to `~/.claude/reviews/{org}/{repo}/{issue-or-pr-or-branch-name-or-plan-slug}.md`
