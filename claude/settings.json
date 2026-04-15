@@ -48,7 +48,7 @@
     "command": "git branch --show-current 2>/dev/null | sed 's|.*/||'"
   },
   "effortLevel": "medium",
+  "showClearContextOnPlanAccept": true,
   "autoMemoryEnabled": false,
-  "autoDreamEnabled": false,
-  "showClearContextOnPlanAccept": true
+  "autoDreamEnabled": false
 }

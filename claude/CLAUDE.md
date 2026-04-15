@@ -12,6 +12,8 @@
 - After planning, ask as many followup/clarifying questions as possible before implementing
 - Don't blindly trust existing code patterns — understand impact of changes
 - For widely-used/common components: don't need to audit every usage, but consider what can break
+- When planning: always study existing code patterns first before proposing implementation
+- Implement tests before writing code (TDD); exception: existing modules with no existing tests — testing optional for now
 
 ## Settings
 - **CRITICAL**: All settings and permission settings go to `~/.claude/settings.json` (user-level) no exceptions and never save to `.claude/settings.local.json`
@@ -22,6 +24,10 @@
 - Use imports/usage for context; if that's also taking >~20 seconds, ask instead
 - Reference existing examples when implementing/planning — don't invent new patterns or syntax
 - Ask what to reference if unclear
+
+## Notes
+
+Notes live at `~/.claude/notes/{org}/{repo}/{slug}.md`. These capture non-obvious discoveries — architecture orientation, system maps, side effects, disjointed dependencies — things that take 30+ min to reverse-engineer and are invisible from the code.
 
 ## Git & PRs
 - Branch naming: `tow/short-change-name`
