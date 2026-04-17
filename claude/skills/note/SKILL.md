@@ -32,7 +32,7 @@ Notes are stored at `~/.claude/notes/{org}/{repo}/{slug}.md` — org/repo derive
 ```
 
 Returns tab-separated `<slug>\t<org/repo>\t<path>\t<title>` per line.
-Display as a readable list with slug and title. Offer to open any of them.
+Display as a readable list with slug and title. **Always ask: "Want me to read any of these?"**
 If empty: "No notes found" and suggest `/note <slug>` to create one.
 
 **With query — smart search:**
@@ -44,7 +44,7 @@ status=$(echo "$result" | cut -f1)
 note_path=$(echo "$result" | cut -f2)
 ```
 
-- If `found`: show path, read and summarize, offer to open or edit. Stop here.
+- If `found`: read and summarize the note, then ask "Want me to keep this in context or make any edits?" Stop here.
 - If `new`: fall back to search:
 
 ```bash
@@ -53,7 +53,7 @@ note_path=$(echo "$result" | cut -f2)
 
 Returns tab-separated `<slug>\t<path>\t<title>` for each match (case-insensitive, searches slug + title).
 
-If matches found: display as a list and offer to open any of them.
+If matches found: display as a list, then ask "Want me to read any of these?"
 If no matches: say nothing found, suggest `/note {slug}` to create one.
 
 **Then stop** — do not create notes in find mode.

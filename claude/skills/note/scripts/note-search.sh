@@ -42,8 +42,9 @@ for note_path in "$NOTES_DIR"/*.md; do
 
   slug_lower=$(echo "$slug" | tr '[:upper:]' '[:lower:]')
   title_lower=$(echo "$title" | tr '[:upper:]' '[:lower:]')
+  summary_lower=$(awk '/^## Summary/{found=1; next} found && /^#/{exit} found{print}' "$note_path" | tr '[:upper:]' '[:lower:]')
 
-  if [[ "$slug_lower" == *"$QUERY_LOWER"* || "$title_lower" == *"$QUERY_LOWER"* ]]; then
+  if [[ "$slug_lower" == *"$QUERY_LOWER"* || "$title_lower" == *"$QUERY_LOWER"* || "$summary_lower" == *"$QUERY_LOWER"* ]]; then
     printf "%s\t%s\t%s\n" "$slug" "$note_path" "$title"
   fi
 done

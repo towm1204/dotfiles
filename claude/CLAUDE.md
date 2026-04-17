@@ -25,6 +25,11 @@
 - Reference existing examples when implementing/planning — don't invent new patterns or syntax
 - Ask what to reference if unclear
 
+## Agents
+
+- **CRITICAL — Code review**: ANY request related to reviewing code — including "review", "diff", "check changes", "look at changes", "review this branch", "review PR", or any variant — MUST immediately invoke the `code-reviewer` subagent via the Agent tool. Never run `git diff` yourself. Never do an inline review. Do not do any preliminary work — invoke the agent as the first and only action.
+- **Note-taker**: When invoking the `note-taker` subagent, always pass `model: "opus"`.
+
 ## Notes
 
 Notes live at `~/.claude/notes/{org}/{repo}/{slug}.md`. These capture non-obvious discoveries — architecture orientation, system maps, side effects, disjointed dependencies — things that take 30+ min to reverse-engineer and are invisible from the code.

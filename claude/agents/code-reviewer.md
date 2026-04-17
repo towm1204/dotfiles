@@ -37,7 +37,7 @@ Rate each issue 0–100. **Only report issues with confidence >= 80.**
 
 ## Output Format
 
-Required for you follow this format after a review and save it to `~/.claude/reviews/{org}/{repo}/{issue-or-pr-or-branch-name-or-plan-slug}.md`)
+Required for you follow this format after a review and output it to me
 
 Report by severity: **Critical** (must fix — blocks deployment or breaks functionality) and **Important** (should fix — impacts correctness or security).
 

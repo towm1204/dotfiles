@@ -1,15 +1,15 @@
 ---
 name: cleanup-memory
-description: Audit CLAUDE.md and SKILL.md files in the repository for stale, redundant, or low-value content. Suggest trims.
+description: Audit CLAUDE.md files in the repository for stale, redundant, or low-value content. Suggest trims.
 ---
 
-Audit CLAUDE.md and SKILL.md files for content that can be trimmed or improved.
+Audit CLAUDE.md files for content that can be trimmed or improved.
 
 ## Scope
 
 - If `$ARGUMENTS` specifies file paths, only audit those files.
-- Otherwise, find all `CLAUDE.md` files in the repository (use Glob for `**/CLAUDE.md`) and all skill files (use Glob for `.claude/skills/**/SKILL.md`).
-- Do NOT audit `~/.claude/CLAUDE.md` or `~/.claude/skills/` (user's global config/skills).
+- Otherwise, find all `CLAUDE.md` files in the repository (use Glob for `**/CLAUDE.md`).
+- Do NOT audit `~/.claude/CLAUDE.md` (user's global config).
 
 ## What to look for
 
