@@ -42,7 +42,7 @@ Present a numbered list of existing notes (slug + title), with a final option fo
 
 Pass the full structured list from Step 1 verbatim to the note-taker agent — do not re-summarize it. The agent has no conversation history; this list is its only source of truth.
 - **Existing note selected:** pass the slug — agent goes straight to Write mode for that note.
-- **New note selected:** pass no slug — agent evaluates the context, proposes a slug, confirms with the user, then writes.
+- **New note selected:** ask the user "This looks like a new topic — what should I file it under?" and use their answer as the note topic/slug. Pass that slug to the agent — agent goes straight to Write mode without proposing its own slug.
 
 ## Step 4: Show the result
 

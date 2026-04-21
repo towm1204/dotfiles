@@ -30,6 +30,7 @@
       "mcp__github__get_pull_request_files"
     ]
   },
+  "model": "sonnet[1m]",
   "hooks": {
     "Notification": [
       {
@@ -45,10 +46,11 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "git branch --show-current 2>/dev/null | sed 's|.*/||'"
+    "command": "bash ~/.claude/statusline-command.sh"
   },
   "effortLevel": "medium",
   "showClearContextOnPlanAccept": true,
+  "tui": "default",
   "autoMemoryEnabled": false,
   "autoDreamEnabled": false
 }

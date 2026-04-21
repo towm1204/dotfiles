@@ -28,6 +28,8 @@
 ## Agents
 
 - **CRITICAL — Code review**: ANY request related to reviewing code — including "review", "diff", "check changes", "look at changes", "review this branch", "review PR", or any variant — MUST immediately invoke the `code-reviewer` subagent via the Agent tool. Never run `git diff` yourself. Never do an inline review. Do not do any preliminary work — invoke the agent as the first and only action.
+- **CRITICAL — Codebase search**: ANY codebase search (Grep, Glob, content search, finding files) MUST be delegated to the `Explore` subagent. Never run Grep or Glob directly. Pass a clear description of what to find and the desired thoroughness level.
+- **CRITICAL — Validation**: After making code changes, ALWAYS run validation using the `general-purpose` subagent with `model: "haiku"`. Read the project's CLAUDE.md for the correct build commands. The agent should return a pass/fail summary.
 - **Note-taker**: When invoking the `note-taker` subagent, always pass `model: "opus"`.
 
 ## Notes
