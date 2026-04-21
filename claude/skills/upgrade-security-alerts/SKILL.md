@@ -1,8 +1,9 @@
 ---
 name: upgrade-security-alerts
 description: Review GitHub Dependabot security alerts and propose dependency upgrades. Lists open alerts with target versions, breaking-change risk, and packages to skip. Waits for user confirmation before editing manifests.
-model: sonnet
 ---
+
+**Invoke the general-purpose agent with model: sonnet to execute this skill.**
 
 Review and triage open Dependabot alerts for the current repo, then upgrade pinned versions after user confirms.
 

@@ -3,6 +3,8 @@ name: cleanup-memory
 description: Audit CLAUDE.md files in the repository for stale, redundant, or low-value content. Suggest trims.
 ---
 
+**Invoke the general-purpose agent with model: sonnet to execute this skill.**
+
 Audit CLAUDE.md files for content that can be trimmed or improved.
 
 ## Scope

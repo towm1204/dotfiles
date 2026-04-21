@@ -3,6 +3,8 @@ name: project-mem-update
 description: Review session and update project CLAUDE.md files with useful project-wide knowledge (patterns, conventions, framework guidance).
 ---
 
+**Invoke the general-purpose agent with model: sonnet to execute this skill.**
+
 # Project Memory Update
 
 Review the current session and propose updates to project CLAUDE.md files. Captures project-wide structural knowledge — not product-specific data models or endpoint details (those belong in notes).

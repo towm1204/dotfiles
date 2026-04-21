@@ -1,8 +1,9 @@
 ---
 name: commit-dotfiles
 description: Commit and push dotfile changes with a semantic commit message
-model: haiku
 ---
+**Invoke the general-purpose agent with model: haiku to execute this skill.**
+
 Commit and push all changes in `~/dotfiles`. **ONLY operates on `~/dotfiles` — never commit or push in any other repo.**
 
 ## Steps

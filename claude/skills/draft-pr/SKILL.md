@@ -1,8 +1,9 @@
 ---
 name: draft-pr
 description: Create a draft PR from the current branch
-model: haiku
 ---
+**Invoke the general-purpose agent with model: haiku to execute this skill.**
+
 Create a draft pull request from the current branch against master.
 
 ## Arguments

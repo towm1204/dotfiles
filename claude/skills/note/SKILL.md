@@ -2,8 +2,9 @@
 name: note
 description: Find, create, or update notes for the current repository. Use `find` to search existing notes; use a slug to create or update one.
 argument-hint: [find|<slug>]
-model: haiku
 ---
+
+**Invoke the general-purpose agent with model: haiku to execute this skill.**
 
 # Note Skill
 

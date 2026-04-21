@@ -1,8 +1,9 @@
 ---
 name: commit-this
 description: Commit staged/unstaged changes with pre-commit hook handling
-model: haiku
 ---
+**Invoke the general-purpose agent with model: haiku to execute this skill.**
+
 Commit all uncommitted changes in the current branch. If $ARGUMENTS is provided, use it as commit message context. Otherwise, write a brief commit message.
 
 ## Steps

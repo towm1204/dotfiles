@@ -1,8 +1,9 @@
 ---
 name: propagate-ngrok
 description: Update ngrok URLs everywhere after a restart — .flaskenv, HelloSign, Increase
-model: haiku
 ---
+**Invoke the general-purpose agent with model: haiku to execute this skill.**
+
 Propagate the current ngrok URL (for localhost:5001) to all places that need it.
 
 ## Steps

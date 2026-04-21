@@ -1,8 +1,9 @@
 ---
 name: deploy-prs
 description: Create staging and release deployment PRs
-model: haiku
 ---
+**Invoke the general-purpose agent with model: haiku to execute this skill.**
+
 Create two deployment PRs:
 
 1. **master → staging**: title `STAGING - {today's date YYYY-MM-DD}`, body "deployment"

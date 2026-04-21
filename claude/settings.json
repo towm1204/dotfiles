@@ -30,7 +30,6 @@
       "mcp__github__get_pull_request_files"
     ]
   },
-  "model": "sonnet[1m]",
   "hooks": {
     "Notification": [
       {

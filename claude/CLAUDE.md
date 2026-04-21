@@ -15,14 +15,11 @@
 - When planning: always study existing code patterns first before proposing implementation
 - Implement tests before writing code (TDD); exception: existing modules with no existing tests — testing optional for now
 
-## Settings
-- **CRITICAL**: All settings and permission settings go to `~/.claude/settings.json` (user-level) no exceptions and never save to `.claude/settings.local.json`
-
 ## File Navigation & Research
 - Don't search for files via text search — ask where things are if unsure
 - If grep is taking >~20 seconds, ask instead
 - Use imports/usage for context; if that's also taking >~20 seconds, ask instead
-- Reference existing examples when implementing/planning — don't invent new patterns or syntax
+- Refer to existing examples when implementing/planning — don't invent new patterns or syntax
 - Ask what to reference if unclear
 
 ## Agents
@@ -40,4 +37,3 @@ Notes live at `~/.claude/notes/{org}/{repo}/{slug}.md`. These capture non-obviou
 - Branch naming: `tow/short-change-name`
 - Commit messages: single line only, no body
 - PR descriptions: single short bullet preferred. Don't over-describe but don't use "TSIA" either.
-- When a PR exists for the current branch, load the PR title, description, and diff into context before starting any task
