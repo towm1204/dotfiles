@@ -70,6 +70,5 @@
   "autoMemoryEnabled": false,
   "autoDreamEnabled": false,
   "skipAutoPermissionPrompt": true,
-  "useAutoModeDuringPlan": false,
-  "model": "haiku"
+  "useAutoModeDuringPlan": false
 }
