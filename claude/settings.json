@@ -27,8 +27,14 @@
       "Bash(npx tsc:*)",
       "Bash(gh pr:*)",
       "mcp__github__get_pull_request",
-      "mcp__github__get_pull_request_files"
-    ]
+      "mcp__github__get_pull_request_files",
+      "Bash(REACT_APP_ENV=production NODE_OPTIONS=--max-old-space-size=5120 yarn build:portal)",
+      "Bash(gh repo:*)",
+      "Bash(~/.claude/skills/note/scripts/note-list.sh *)",
+      "Bash(~/.claude/skills/note/scripts/note-find.sh *)",
+      "Bash(yarn why *)"
+    ],
+    "defaultMode": "default"
   },
   "hooks": {
     "Notification": [
@@ -38,6 +44,17 @@
           {
             "type": "command",
             "command": "afplay /System/Library/Sounds/Glass.aiff"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Glob|Grep",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -f graphify-out/graph.json ] && echo '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"additionalContext\":\"graphify: Knowledge graph exists. Read graphify-out/GRAPH_REPORT.md for god nodes and community structure before searching raw files.\"}}' || true"
           }
         ]
       }
@@ -51,5 +68,8 @@
   "showClearContextOnPlanAccept": true,
   "tui": "default",
   "autoMemoryEnabled": false,
-  "autoDreamEnabled": false
+  "autoDreamEnabled": false,
+  "skipAutoPermissionPrompt": true,
+  "useAutoModeDuringPlan": false,
+  "model": "haiku"
 }
