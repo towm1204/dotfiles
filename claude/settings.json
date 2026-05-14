@@ -32,7 +32,13 @@
       "Bash(gh repo:*)",
       "Bash(~/.claude/skills/note/scripts/note-list.sh *)",
       "Bash(~/.claude/skills/note/scripts/note-find.sh *)",
-      "Bash(yarn why *)"
+      "Bash(yarn why *)",
+      "Bash(~/.claude/skills/note/scripts/note-find.sh*)",
+      "Bash(~/.claude/skills/note/scripts/note-search.sh *)",
+      "Bash(pip index *)",
+      "Bash(gh api *)",
+      "Bash(SKIP=mypy git commit *)",
+      "Bash(pytest investment_management/tests/*)"
     ],
     "defaultMode": "default"
   },
@@ -60,5 +66,5 @@
   "autoDreamEnabled": false,
   "preferredNotifChannel": "notifications_disabled",
   "skipAutoPermissionPrompt": true,
-  "useAutoModeDuringPlan": false
+  "useAutoModeDuringPlan": true
 }
