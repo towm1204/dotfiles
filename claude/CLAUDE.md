@@ -18,11 +18,9 @@
 
 ## Agents
 
-- **CRITICAL — Code review**: ANY request related to reviewing code — including "review", "review this branch", "review PR", or any variant — MUST immediately invoke the `code-reviewer` subagent via the Agent tool. Never run `git diff` yourself. Never do an inline review. Do not do any preliminary work — invoke the agent as the first and only action. When the agent returns, relay its full output verbatim — do NOT summarize or condense it.
 - **CRITICAL — Codebase search**: ANY codebase search (Grep, Glob, content search, finding files) MUST be delegated to the `Explore` subagent with `model: "haiku"`. Never run Grep or Glob directly. Pass a clear description of what to find and the desired thoroughness level.
 - **CRITICAL — Validation & tests**: Run validation builds and test suites via `general-purpose` subagent with `model: "haiku"`. Read project CLAUDE.md for correct build commands. Agent returns pass/fail summary.
 - **Note-taker**: When invoking the `note-taker` subagent, always pass `model: "opus"`.
-- **Test writer**: ANY request to write tests — unit, service, integration, view, or endpoint tests — MUST invoke the `test-writer` subagent via the Agent tool. Do not write tests inline.
 - **Migration reviewer** (cash-flow-portal-backend only): After writing or modifying an Alembic migration file, automatically invoke the `migration-reviewer` subagent (`~/.claude/agents/migration-reviewer.md`) before considering the work done. Do not skip this step.
 
 ## Notes

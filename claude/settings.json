@@ -71,16 +71,25 @@
     "command": "bash ~/.claude/statusline-command.sh"
   },
   "enabledPlugins": {
-    "claude-code-setup@claude-plugins-official": true,
-    "skill-creator@claude-plugins-official": true
+    "claude-md-management@claude-plugins-official": true,
+    "code-simplifier@claude-plugins-official": true,
+    "andrej-karpathy-skills@karpathy-skills": true
+  },
+  "extraKnownMarketplaces": {
+    "karpathy-skills": {
+      "source": {
+        "source": "github",
+        "repo": "forrestchang/andrej-karpathy-skills"
+      }
+    }
   },
   "effortLevel": "high",
+  "advisorModel": "opus",
   "showClearContextOnPlanAccept": true,
   "tui": "default",
   "autoMemoryEnabled": false,
   "autoDreamEnabled": false,
   "preferredNotifChannel": "notifications_disabled",
   "skipAutoPermissionPrompt": true,
-  "useAutoModeDuringPlan": true,
-  "advisorModel": "opus"
+  "useAutoModeDuringPlan": true
 }
