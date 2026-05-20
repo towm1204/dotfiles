@@ -133,3 +133,6 @@ alias git-rm-b="git branch | grep -v \* | xargs git branch -D"
 
 
 export PATH="$HOME/.local/bin:$PATH"
+
+#markedit
+alias md="open -a MarkEdit"

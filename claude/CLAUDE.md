@@ -28,10 +28,6 @@
 
 Notes live at `~/.claude/notes/{org}/{repo}/{slug}.md`. Domain/topic documentation written for AI consumption — architecture, system maps, side effects, implicit dependencies.
 
-## Plans
-
-Plans live at `~/.claude/plans/`. Naming format: `{repo}-YYYY-MM-DD-branch-name.md` (e.g. `cash-flow-portal-backend-2026-05-14-tow-bank-transaction-hydration-5.1.md`).
-
 ## Git & PRs
 - Branch naming: `tow/short-change-name`
 - Commit messages: single line only, no body

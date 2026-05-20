@@ -40,7 +40,7 @@ Find all existing CLAUDE.md files:
 find . -name "CLAUDE.md" -not -path "*/node_modules/*" | sort
 ```
 
-Propose which CLAUDE.md to update — or propose creating a new one in a subdirectory if the knowledge is scoped to a specific area (e.g. `investment_management/core/api/CLAUDE.md`).
+Propose which CLAUDE.md to update — or propose creating a new one in a subdirectory if the knowledge is scoped to a specific area (e.g. `investment_management/core/api/CLAUDE.md`, `investment_management/core/models/CLAUDE.md`).
 
 Present:
 - The target file path
