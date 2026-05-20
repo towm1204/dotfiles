@@ -22,6 +22,7 @@
 - **CRITICAL — Validation & tests**: Run validation builds and test suites via `general-purpose` subagent with `model: "haiku"`. Read project CLAUDE.md for correct build commands. Agent returns pass/fail summary.
 - **Note-taker**: When invoking the `note-taker` subagent, always pass `model: "opus"`.
 - **Migration reviewer** (cash-flow-portal-backend only): After writing or modifying an Alembic migration file, automatically invoke the `migration-reviewer` subagent (`~/.claude/agents/migration-reviewer.md`) before considering the work done. Do not skip this step.
+- - **Test writer**: ANY request to write tests — unit, service, integration, view, or endpoint tests — MUST invoke the `test-writer` subagent via the Agent tool. Do not write tests inline.
 
 ## Notes
 
