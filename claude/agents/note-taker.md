@@ -20,7 +20,7 @@ note_path=$(echo "$result" | cut -f2)
 ```
 
 - `new`: read `~/.claude/skills/note/templates/grok.md`, replace `{title}`, `{org}`, `{repo}`, `{date}` (YYYY-MM-DD), write fully populated note to `note_path`
-- `found`: read the current file, update/extend with new information — preserve existing content, don't regress it
+- `found`: **before writing anything**, audit the existing note — remove stale, inaccurate, or superseded content. The goal is the current picture of the system, not an archaeological record. Then update/extend with new information.
 
 ## Step 3: Write the note
 
@@ -45,9 +45,15 @@ Gotchas, silent failures, things that look right but aren't. Specific and action
 
 ## Quality bar
 
-- Every claim backed by a file path or line ref
+- **Only document what can't be discovered by reading the code.** If something is obvious from variable names, function signatures, or standard framework behavior, omit it.
+- Every non-trivial claim backed by a file path or line ref
 - No obvious facts, no well-documented behavior, no filler
 - Dense enough that the same exploration isn't needed again
 - Skip a section entirely if it has nothing non-trivial to say
+- Prefer terse bullets over sentences; omit words that add no meaning
+
+## Length check
+
+After writing, count the lines in the note. If it exceeds **300 lines**, warn the user: "This note is {N} lines — consider splitting it." Suggest 2–3 candidate sub-topics it could be split into.
 
 Confirm the saved path to the user when done.
