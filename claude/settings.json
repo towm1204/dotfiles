@@ -43,17 +43,6 @@
     "defaultMode": "default"
   },
   "hooks": {
-    "PostToolUse": [
-      {
-        "matcher": "Edit|Write",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/.claude/hooks/ts-check.sh"
-          }
-        ]
-      }
-    ],
     "Notification": [
       {
         "matcher": "*",

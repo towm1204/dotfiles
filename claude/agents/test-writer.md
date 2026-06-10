@@ -21,7 +21,7 @@ This agent governs **what to test and how to think about coverage**. Project doc
 ## Before writing
 
 1. **Classify**: unit test (a service/class/method — bypass HTTP) vs integration test (an endpoint or sequence of endpoints — full request/response cycle). If unclear, ask.
-2. **Read project conventions**: the project's `CLAUDE.md`, the nearest `conftest.py`, and one nearby test file in the same directory. These define assertion style, factory/fixture patterns, mocking conventions, and import paths.
+2. **Read project conventions**: the project's `CLAUDE.md` (including any `tests/CLAUDE.md` in the target test directory), the nearest `conftest.py`, and one nearby test file in the same directory. These define assertion style, factory/fixture patterns, mocking conventions, and import paths.
 3. **Identify the behaviors that matter**: read the code under test and list what *callers care about* — not every line, every branch. If the priorities are unclear, ask.
 
 ## Coverage menu
@@ -164,27 +164,7 @@ Why it matters: factories + a real DB session are cheap. Mocking internal servic
 
 Always patch at the **import site** (`investment_management.core.services.X.lib_name`), not at the library root, and assert on the input the mock received.
 
-### 3. Verifying via raw DB query instead of through the interface
-
-Calling `db.session.query(Model).filter(...)` after a service call to confirm state, when the service has a read method that would expose the same thing.
-
-```python
-# Bad — bypasses the read interface
-BankAccountService.create(user_id=lp_a.id, bank_name="Chase")
-row = db.session.query(BankAccount).filter_by(user_id=lp_a.id).one()
-tc.assertEqual(row.bank_name, "Chase")
-
-# Good — exercises the interface both directions
-created = BankAccountService.create(user_id=lp_a.id, bank_name="Chase")
-fetched = BankAccountService.get(account_id=created.id)
-tc.assertEqual(fetched.bank_name, "Chase")
-```
-
-Nuance: raw queries are legitimate when there's no public read (e.g. verifying a webhook handler wrote a `BankingEvent` row when no `get_event` method exists). Rule: prefer the interface; drop to raw queries only when no read path exists.
-
-Why it matters: if the read path changes (soft-delete filter, multi-tenant scope, column rename), interface-based assertions update with it; raw-query assertions silently lie.
-
-### 4. Overlapping coverage between unit and integration
+### 3. Overlapping coverage between unit and integration
 
 Re-asserting every error branch at the view layer when the unit test already owns it.
 
@@ -206,6 +186,29 @@ tc.assertEqual(response.status_code, 400)
 ```
 
 Unit tests own *what counts as invalid*; view tests own *that 400s map correctly and the response shape is right*.
+
+### 4. Helper functions in test files
+
+Extracting repeated service construction or setup into a `_make_*` or `_mock_*` function defined at module level in the test file.
+
+```python
+# Bad — helper function in test file
+def _make_service(deal, user=None):
+    return DealAccountingService(deal_id=deal.id, current_user_id=(user or deal.lead_sponsor).id)
+
+class TestCreate:
+    def test_something(self, tc, deal_a):
+        result = _make_service(deal_a).create(...)
+```
+
+```python
+# Good — use an existing conftest fixture, or add one
+class TestCreate:
+    def test_something(self, tc, deal_a, make_accounting_service):
+        result = make_accounting_service(deal_a).create(...)
+```
+
+Why it matters: helpers in test files bypass fixture teardown, scoping, and discoverability. Always check the nearest `conftest.py` for existing factory fixtures before writing any helper. If you need one that doesn't exist, add it to `conftest.py`.
 
 ## When you're done
 
