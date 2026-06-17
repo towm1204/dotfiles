@@ -4,7 +4,7 @@ description: Find, create, or update notes for the current repository. Use `find
 argument-hint: [find|<slug>]
 ---
 
-**Invoke the general-purpose agent with model: haiku to execute this skill.**
+**Run the scripts below via a general-purpose agent with model: haiku (it returns the raw output). All user interaction and note-taker invocation happen in the main thread — never inside the subagent.**
 
 # Note Skill
 
