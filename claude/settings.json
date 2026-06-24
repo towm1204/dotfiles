@@ -80,5 +80,6 @@
   "autoDreamEnabled": false,
   "preferredNotifChannel": "notifications_disabled",
   "skipAutoPermissionPrompt": true,
-  "useAutoModeDuringPlan": true
+  "useAutoModeDuringPlan": true,
+  "model": "opus[1m]"
 }
