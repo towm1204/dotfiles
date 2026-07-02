@@ -9,24 +9,17 @@
 - Use sentence case for UI copies — no Title Case
 
 ## Planning & Changes
-- **Before planning any change, zoom out first — understand how the affected area fits into the broader system. Do not skip this.**
-- After planning, ask as many followup/clarifying questions as possible before implementing
-- Don't blindly trust existing code patterns — understand impact of changes
-- For widely-used/common components: don't need to audit every usage, but consider what can break
-- When planning: always study existing code patterns first; refer to existing examples — don't invent new patterns or syntax
-- Ask where files/references are if unsure — don't search blindly
-- Write or adjust tests first before implementing (where tests exist — some projects use build-only validation)
+- **Zoom out first**: before planning any change, understand how the affected area fits into the broader system. Do not skip this.
+- **Study existing patterns**: refer to existing examples, don't invent new syntax — but don't blindly trust them; understand impact before reusing.
+- **Common components**: don't need to audit every usage, but consider what can break.
+- **Unsure of file/reference locations**: ask — don't search blindly.
+- **Clarifying questions**: for non-trivial changes, ask before implementing; skip for trivial/obvious ones.
+- **Tests first**: write or adjust tests before implementing (where tests exist — some projects use build-only validation).
 
 ## Agents
 
-- **Default — offload menial work to haiku**: Mechanical, low-judgment, self-contained tasks (bulk renames, formatting, boilerplate, find-replace, log/file reading & condensing, running validation builds/linters/test suites and reporting pass/fail) → delegate to `general-purpose` subagent with `model: "haiku"`. Rules:
-  - Self-contained prompt only: absolute paths + explicit acceptance criteria. No reliance on prior conversation context.
-  - For builds/tests: read project CLAUDE.md for correct commands; agent returns a pass/fail summary.
-  - Chunk large jobs (per-file/per-directory) so each fits a small context.
-  - Always verify the agent's output yourself before confirming success.
-  - NEVER for: architecture, judgment-heavy debugging, security-sensitive edits, or anything needing conversation context — do those inline.
-  - Specialized agents below take precedence over this default when they apply.
 - **CRITICAL — Codebase search**: ANY codebase search (Grep, Glob, content search, finding files) MUST be delegated to the `Explore` subagent with `model: "haiku"`. Never run Grep or Glob directly. Pass a clear description of what to find and the desired thoroughness level.
+- **CRITICAL — Validation & tests**: Run validation builds and test suites via `general-purpose` subagent with `model: "haiku"`. Read project CLAUDE.md for correct build commands. Agent returns pass/fail summary.
 - **Note-taker**: When invoking the `note-taker` subagent, always pass `model: "opus"`.
 - **Migration reviewer** (cash-flow-portal-backend only): After writing or modifying an Alembic migration file, automatically invoke the `migration-reviewer` subagent (`~/.claude/agents/migration-reviewer.md`) before considering the work done. Do not skip this step.
 - **Test writer**: ANY request to write tests — unit, service, integration, view, or endpoint tests — MUST invoke the `test-writer` subagent via the Agent tool. Do not write tests inline.
@@ -38,6 +31,6 @@ Notes live at `~/.claude/notes/{org}/{repo}/{slug}.md`. Domain/topic documentati
 Use `/note find` to look up, `/note <slug>` or `/grok` to write.
 
 ## Git & PRs
-- Branch naming: `tow/short-change-name`
-- Commit messages: single line only, no body
-- PR descriptions: single short bullet preferred. Don't over-describe but don't use "TSIA" either.
+- **Branch naming**: `tow/short-change-name`
+- **Commit messages**: single line only, no body
+- **PR descriptions**: single short bullet preferred. Don't over-describe but don't use "TSIA" either.

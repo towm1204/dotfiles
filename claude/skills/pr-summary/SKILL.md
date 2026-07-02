@@ -25,8 +25,15 @@ Produce a concise bullet-point summary of what changed in the current branch/PR.
 ## Output format
 
 - Start each bullet with the **what**, not the how
-- One sentence per bullet, no fluff
+- One short sentence per bullet, no fluff — a bullet that needs a colon-separated
+  list of sub-details or a parenthetical aside is a sign it should be split or
+  trimmed, not padded
+- Skip implementation minutiae (function/prop/variable names, which existing
+  component got reused, field names on a type) unless the bullet is otherwise
+  ambiguous without it — the reader wants what changed, not how it was wired up
 - No header, no preamble — just the bullets
+- This applies double on large or complex diffs: the more there is to summarize,
+  the more each bullet needs to compress, not expand
 
 ## Example
 
@@ -46,3 +53,14 @@ Not this (too granular):
 - Added backfill script
 - Registered backfill in scheduled_manage.py
 - Added tests
+
+Given a large diff implementing ACH payments in a funnel plus a few smaller fixes:
+
+- ACH payment flow implemented for capital call drawdown funnel (pay, schedule, cancel, ledger summary).
+- `drawdown_participant_id` added to payment query/mutation for capital call context.
+- `FUND_CAPITAL_CALL` bumped to top action-required priority.
+- Fixed "partially funded" amount calc.
+
+Not this (verbose — explains internals, names components/props, hedges with asides):
+- Implemented ACH payment flow for the capital call drawdown funnel (previously a TODO): payment initiation/scheduling, 2FA wall, cancel-scheduled-payment, and a funded-payment ledger summary view, reusing `InvestmentPaymentButtonV2`/`InitiatePaymentConfirmation` and extending `InvestorCapitalCallDrawdown` with `receiving_bank_account_id`/`ach_receiving_bank_id` for GP-increase detection.
+- Added `drawdown_participant_id` to the investment payment query/mutation so ACH payments can be scoped to a specific capital call participant.
