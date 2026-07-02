@@ -12,7 +12,7 @@
 - **Zoom out first**: before planning any change, understand how the affected area fits into the broader system. Do not skip this.
 - **Study existing patterns**: refer to existing examples, don't invent new syntax — but don't blindly trust them; understand impact before reusing.
 - **Common components**: don't need to audit every usage, but consider what can break.
-- **Unsure of file/reference locations**: ask — don't search blindly.
+- **Unsure of institutional/tribal knowledge**: ask — don't guess (e.g. "which service owns this rule"). If it's just a file location, search for it instead.
 - **Clarifying questions**: for non-trivial changes, ask before implementing; skip for trivial/obvious ones.
 - **Tests first**: write or adjust tests before implementing (where tests exist — some projects use build-only validation).
 
