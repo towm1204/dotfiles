@@ -42,6 +42,7 @@
     ],
     "defaultMode": "default"
   },
+  "model": "sonnet",
   "hooks": {
     "Notification": [
       {
@@ -55,7 +56,11 @@
       }
     ]
   },
+  "worktree": {
+    "baseRef": "fresh"
+  },
   "enableWorkflows": false,
+  "workflowKeywordTriggerEnabled": false,
   "statusLine": {
     "type": "command",
     "command": "bash ~/.claude/statusline-command.sh"
@@ -77,12 +82,17 @@
     }
   },
   "effortLevel": "high",
+  "advisorModel": "opus",
   "showClearContextOnPlanAccept": true,
   "tui": "default",
   "autoMemoryEnabled": false,
   "autoDreamEnabled": false,
   "skipWorkflowUsageWarning": true,
+  "theme": "dark",
+  "editorMode": "normal",
   "preferredNotifChannel": "notifications_disabled",
+  "inputNeededNotifEnabled": true,
+  "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true,
   "useAutoModeDuringPlan": true
 }

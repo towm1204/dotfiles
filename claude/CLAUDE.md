@@ -21,7 +21,6 @@
 - **CRITICAL — Codebase search**: ANY codebase search (Grep, Glob, content search, finding files) MUST be delegated to the `Explore` subagent with `model: "haiku"`. Never run Grep or Glob directly. Pass a clear description of what to find and the desired thoroughness level.
 - **CRITICAL — Validation & tests**: Run via `general-purpose` subagent with `model: "haiku"`. Main session orchestrates — dispatch one validation/test subagent at a time and wait for it to return; never fire multiple validation/test subagents in parallel. Read project CLAUDE.md for correct build commands. Agent returns pass/fail summary.
 - **Menial edits**: bulk renames, formatting, boilerplate, find-replace — delegate to `general-purpose` subagent with `model: "haiku"`. Give absolute paths + explicit acceptance criteria (fresh agent has zero context).
-- **Note-taker**: When invoking the `note-taker` subagent, always pass `model: "opus"`.
 - **Migration reviewer** (cash-flow-portal-backend only): After writing or modifying an Alembic migration file, automatically invoke the `migration-reviewer` subagent (`~/.claude/agents/migration-reviewer.md`) before considering the work done. Do not skip this step.
 - **Test writer**: ANY request to write tests — unit, service, integration, view, or endpoint tests — MUST invoke the `test-writer` subagent via the Agent tool. Do not write tests inline.
 - **Code simplifier**: ANY request to simplify code MUST delegate to the `code-simplifier:code-simplifier` subagent via the Agent tool. Do not simplify code inline.
@@ -29,7 +28,7 @@
 ## Notes
 
 Notes live at `~/.claude/notes/{org}/{repo}/{slug}.md`. Domain/topic documentation written for AI consumption — architecture, system maps, side effects, implicit dependencies.
-Use `/note find` to look up, `/note <slug>` or `/grok` to write.
+Use `/note` to look up, `/grok` to write or update.
 
 ## Git & PRs
 - **Branch naming**: `tow/short-change-name`

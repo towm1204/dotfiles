@@ -18,5 +18,9 @@
 <!-- Key mechanics: how things are computed, what flags/modes exist, what callers must do.
      For long/redundant paths, reference file:line instead of restating code. -->
 
+## Permissions
+<!-- Who can access/perform this and how it's enforced: actors/roles involved, gating checks,
+     decorators/middleware/helpers that enforce them, per-actor variations. Omit if genuinely N/A. -->
+
 ## Pitfalls
 <!-- Gotchas, silent failures, things that look right but aren't. -->

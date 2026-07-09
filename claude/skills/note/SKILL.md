@@ -1,32 +1,20 @@
 ---
 name: note
-description: Find, create, or update notes for the current repository. Use `find` to search existing notes; use a slug to create or update one.
-argument-hint: [find|<slug>]
+description: Find notes for the current repository — list all or search by keyword. Use `/grok` to create or update a note.
+argument-hint: [query]
 ---
 
-**Run the scripts below via a general-purpose agent with model: haiku (it returns the raw output). All user interaction and note-taker invocation happen in the main thread — never inside the subagent.**
+**Run the scripts below via a general-purpose agent with model: haiku (it returns the raw output).**
 
 # Note Skill
 
 Notes are stored at `~/.claude/notes/{org}/{repo}/{slug}.md` — org/repo derived from git remote.
 
-## Arguments
+## Step 1: Parse argument
 
-- `find` — find existing notes without creating
-  - `/note find` — list all notes for current repo
-  - `/note find {q}` — smart search: exact slug match first, falls back to title+filename search
-- `<slug>` — create or update a note; invokes the note-taker agent
+`query` = search term (optional)
 
-## Step 1: Parse arguments
-
-- `find_mode` = true if first argument is `find`
-- `query` = search term (optional in find mode)
-
-## Step 2: Route by mode
-
-### Find mode
-
-**No query — list all notes:**
+## Step 2: No query — list all notes
 
 ```bash
 ~/.claude/skills/note/scripts/note-list.sh
@@ -34,9 +22,9 @@ Notes are stored at `~/.claude/notes/{org}/{repo}/{slug}.md` — org/repo derive
 
 Returns tab-separated `<slug>\t<org/repo>\t<path>\t<title>` per line.
 Display as a readable list with slug and title. **Always ask: "Want me to read any of these?"**
-If empty: "No notes found" and suggest `/note <slug>` to create one.
+If empty: "No notes found" and suggest `/grok` to create one.
 
-**With query — smart search:**
+## Step 3: With query — smart search
 
 First try exact slug match:
 ```bash
@@ -45,8 +33,8 @@ status=$(echo "$result" | cut -f1)
 note_path=$(echo "$result" | cut -f2)
 ```
 
-- If `found`: read and summarize the note, then ask "Want me to keep this in context or make any edits?" Stop here.
-- If `new`: fall back to search:
+- If `found`: read and summarize the note, then ask "Want me to keep this in context?" Stop here.
+- If `new` (no exact match): fall back to search:
 
 ```bash
 ~/.claude/skills/note/scripts/note-search.sh {query}
@@ -55,12 +43,4 @@ note_path=$(echo "$result" | cut -f2)
 Returns tab-separated `<slug>\t<path>\t<title>` for each match (case-insensitive, searches slug + title).
 
 If matches found: display as a list, then ask "Want me to read any of these?"
-If no matches: say nothing found, suggest `/note {slug}` to create one.
-
-**Then stop** — do not create notes in find mode.
-
-### Create/Update mode
-
-If slug is missing, ask the user what to name the note and suggest one based on recent context.
-
-Invoke the note-taker agent in Write mode with the slug and current session context.
+If no matches: say nothing found, suggest `/grok` to create one.
