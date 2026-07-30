@@ -15,6 +15,7 @@
 - **Unsure of institutional/tribal knowledge**: ask — don't guess (e.g. "which service owns this rule"). If it's just a file location, search for it instead.
 - **Clarifying questions**: for non-trivial changes, ask before implementing; skip for trivial/obvious ones.
 - **Tests first**: write or adjust tests before implementing (where tests exist — some projects use build-only validation).
+- **Dev cost**: when making technical decisions, do not give much weight to development cost. Instead, prefer quality, simplicity, robustness, scalability, and long term maintainability.
 
 ## Agents
 
