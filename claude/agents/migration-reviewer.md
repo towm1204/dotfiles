@@ -33,8 +33,7 @@ Review the migration file(s) provided or changed. Use `git diff master...HEAD --
 ### 6. Batch operations
 - If any `alter_column`, `drop_column`, or `add_column` targets a table that may need `batch_alter_table` (check for SQLite compat in tests), flag if not used.
 
-### 7. Head chain integrity
-- Confirm `down_revision` matches the current head for the correct project branch. Diverged heads cause `make im-check-heads` to fail.
+Head/revision chain integrity (`down_revision` linkage, diverged heads) is NOT in scope — that's checked separately before this review runs.
 
 ## Output Format
 
