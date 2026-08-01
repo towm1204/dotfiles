@@ -210,6 +210,12 @@ class TestCreate:
 
 Why it matters: helpers in test files bypass fixture teardown, scoping, and discoverability. Always check the nearest `conftest.py` for existing factory fixtures before writing any helper. If you need one that doesn't exist, add it to `conftest.py`.
 
+## Running your tests
+
+Don't run the tests yourself inline. Once written, dispatch a `general-purpose` subagent with `model: "haiku"` to run them and report pass/fail — pass it the exact file/class/method path(s) and the project's test command (check CLAUDE.md). Wait for it to return before reporting done.
+
+Never run tests concurrently with any other test run — not just other test executions, but forks, background bash, or parallel sessions too. Many projects share one test DB with commit-persisted fixtures (no per-test rollback), so concurrent runs corrupt shared state and throw spurious failures (e.g. `IntegrityError`) that look like real bugs but aren't.
+
 ## When you're done
 
 Briefly note (a) what's covered, (b) any deliberate gaps and why, (c) anything you'd recommend covering with the *other* test type (e.g. unit tests after writing a view test, or vice versa).

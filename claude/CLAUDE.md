@@ -6,6 +6,7 @@
 ## Code Style
 - Single-line comments: concise
 - Multi-line comments: fuller sentences, still concise
+- Comment sparingly — most lines need none. When you do, explain why, not what.
 - Use sentence case for UI copies — no Title Case
 
 ## Planning & Changes
@@ -14,16 +15,16 @@
 - **Common components**: don't need to audit every usage, but consider what can break.
 - **Unsure of institutional/tribal knowledge**: ask — don't guess (e.g. "which service owns this rule"). If it's just a file location, search for it instead.
 - **Clarifying questions**: for non-trivial changes, ask before implementing; skip for trivial/obvious ones.
-- **Tests first**: write or adjust tests before implementing (where tests exist — some projects use build-only validation).
 - **Dev cost**: when making technical decisions, do not give much weight to development cost. Instead, prefer quality, simplicity, robustness, scalability, and long term maintainability.
+- **Tests after, not before**: finish and validate the implementation first, then invoke `test-writer` to write and run tests for it.
 
 ## Agents
 
 - **CRITICAL — Codebase search**: ANY codebase search (Grep, Glob, content search, finding files) MUST be delegated to the `Explore` subagent with `model: "haiku"`. Never run Grep or Glob directly. Pass a clear description of what to find and the desired thoroughness level.
-- **CRITICAL — Validation & tests**: Run automatically after any code edit, before reporting the task done. Run via `general-purpose` subagent with `model: "haiku"`. Main session orchestrates — dispatch one validation/test subagent at a time and wait for it to return; never run tests concurrently with another test run of any kind — not just other validation subagents, but forks, background bash, or parallel sessions too. Many projects share one test DB with commit-persisted fixtures (no per-test rollback), so concurrent runs corrupt shared state and throw spurious failures (e.g. `IntegrityError`) that look like real bugs but aren't. Read project CLAUDE.md for correct validation commands. Agent returns pass/fail summary.
+- **CRITICAL — Validation**: compile/type-check only (e.g. build, `tsc`, `mypy`) — not tests. Run automatically after any code edit, before reporting the task done. Run via `general-purpose` subagent with `model: "haiku"`. Read project CLAUDE.md for correct validation commands. Agent returns pass/fail summary.
 - **Menial edits**: bulk renames, formatting, boilerplate, find-replace — delegate to `general-purpose` subagent with `model: "haiku"`. Give absolute paths + explicit acceptance criteria (fresh agent has zero context).
 - **Migration reviewer** (cash-flow-portal-backend only): After writing or modifying an Alembic migration file, automatically invoke the `migration-reviewer` subagent (`~/.claude/agents/migration-reviewer.md`) before considering the work done. Do not skip this step.
-- **Test writer**: ANY request to write tests — unit, service, integration, view, or endpoint tests — MUST invoke the `test-writer` subagent via the Agent tool. Do not write tests inline.
+- **Test writer**: ANY request to write tests — unit, service, integration, view, or endpoint tests — MUST invoke the `test-writer` subagent via the Agent tool. Do not write tests inline. Never spawn more than one `test-writer` at a time.
 
 ## Notes
 
