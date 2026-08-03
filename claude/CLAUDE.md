@@ -1,7 +1,8 @@
 ## Communication Style
-- Extremely concise in all interactions, commit messages and PR descriptions
+- Concise in all interactions
 - Sacrifice grammar for brevity
 - Keep responses short & direct
+- Never use em dashes, anywhere: chat, code comments, docstrings, commit messages, PR descriptions, docs.
 
 ## Code Style
 - Single-line comments: concise
@@ -16,15 +17,21 @@
 - **Unsure of institutional/tribal knowledge**: ask — don't guess (e.g. "which service owns this rule"). If it's just a file location, search for it instead.
 - **Clarifying questions**: for non-trivial changes, ask before implementing; skip for trivial/obvious ones.
 - **Dev cost**: when making technical decisions, do not give much weight to development cost. Instead, prefer quality, simplicity, robustness, scalability, and long term maintainability.
-- **Tests after, not before**: finish and validate the implementation first, then invoke `test-writer` to write and run tests for it.
+- **Order of work**: implement, then validate (compile / type-check), then tests. Intent gets verified while implementing; tests lock in the behavior that resulted.
+- **When to skip tests**: trivial changes (typo, rename, formatting, config, docs, copy), nothing observable to assert, the area has no existing test suite, or the user said not to test.
 
 ## Agents
 
-- **CRITICAL — Codebase search**: ANY codebase search (Grep, Glob, content search, finding files) MUST be delegated to the `Explore` subagent with `model: "haiku"`. Never run Grep or Glob directly. Pass a clear description of what to find and the desired thoroughness level.
-- **CRITICAL — Validation**: compile/type-check only (e.g. build, `tsc`, `mypy`) — not tests. Run automatically after any code edit, before reporting the task done. Run via `general-purpose` subagent with `model: "haiku"`. Read project CLAUDE.md for correct validation commands. Agent returns pass/fail summary.
-- **Menial edits**: bulk renames, formatting, boilerplate, find-replace — delegate to `general-purpose` subagent with `model: "haiku"`. Give absolute paths + explicit acceptance criteria (fresh agent has zero context).
-- **Migration reviewer** (cash-flow-portal-backend only): After writing or modifying an Alembic migration file, automatically invoke the `migration-reviewer` subagent (`~/.claude/agents/migration-reviewer.md`) before considering the work done. Do not skip this step.
-- **Test writer**: ANY request to write tests — unit, service, integration, view, or endpoint tests — MUST invoke the `test-writer` subagent via the Agent tool. Do not write tests inline. Never spawn more than one `test-writer` at a time.
+Which agent does which job. One line per job.
+
+| Job | Agent | Notes |
+|---|---|---|
+| **CRITICAL** Codebase search: Grep, Glob, content search, finding files | `Explore`, `model: "haiku"` | Never grep or glob directly. Pass what to find plus the thoroughness level |
+| **CRITICAL** Validation: compile / type-check (build, `tsc`, `mypy`), not tests | `general-purpose`, `model: "haiku"` | Run automatically after any code edit, before reporting the task done. Project CLAUDE.md has the command. Agent returns pass/fail |
+| Running tests | `general-purpose`, `model: "haiku"` | Never inline. Only one test run in flight anywhere: no parallel runners, no forks, no background bash |
+| Writing or adjusting tests (unit, service, integration, view, endpoint) | `test-writer` | Never more than one at a time. Never write or edit tests inline |
+| Menial edits: bulk rename, formatting, boilerplate, find-replace | `general-purpose`, `model: "haiku"` | Absolute paths plus explicit acceptance criteria (fresh agent has zero context) |
+| Alembic migration review (cash-flow-portal-backend only) | `migration-reviewer` (`~/.claude/agents/migration-reviewer.md`) | After any new or modified migration file, before considering the work done |
 
 ## Notes
 

@@ -214,6 +214,8 @@ Why it matters: helpers in test files bypass fixture teardown, scoping, and disc
 
 Don't run the tests yourself inline. Once written, dispatch a `general-purpose` subagent with `model: "haiku"` to run them and report pass/fail — pass it the exact file/class/method path(s) and the project's test command (check CLAUDE.md). Wait for it to return before reporting done.
 
+On failure, decide whether the *test* or the *code* is wrong. Fix the test; if the code looks wrong, report it back to the caller rather than reshaping the test around a bug. Never weaken or delete an assertion to get green.
+
 Never run tests concurrently with any other test run — not just other test executions, but forks, background bash, or parallel sessions too. Many projects share one test DB with commit-persisted fixtures (no per-test rollback), so concurrent runs corrupt shared state and throw spurious failures (e.g. `IntegrityError`) that look like real bugs but aren't.
 
 ## When you're done
