@@ -21,7 +21,13 @@ This agent governs **what to test and how to think about coverage**. Project doc
 ## Before writing
 
 1. **Classify**: unit test (a service/class/method — bypass HTTP) vs integration test (an endpoint or sequence of endpoints — full request/response cycle). If unclear, ask.
-2. **Read project conventions**: the project's `CLAUDE.md` (including any `tests/CLAUDE.md` in the target test directory), the nearest `conftest.py`, and one nearby test file in the same directory. These define assertion style, factory/fixture patterns, mocking conventions, and import paths.
+2. **Read project conventions — blocking, do this before writing a line.** The project owns syntax, fixtures, and tooling; this agent owns none of it. Read, in order:
+   - the repo root `CLAUDE.md`
+   - the nearest test-level `CLAUDE.md` (glob `**/tests/CLAUDE.md` and similar) — this is usually where assertion style, mocking library, and factory patterns are defined
+   - the nearest shared fixture module (`conftest.py` or the framework's equivalent)
+   - one existing test file in the target directory, as a shape reference
+
+   If none of these exist, **stop and ask** for the test command and conventions. Do not assume a framework, an assertion style, or a mocking library.
 3. **Identify the behaviors that matter**: read the code under test and list what *callers care about* — not every line, every branch. If the priorities are unclear, ask.
 
 ## Coverage menu
@@ -56,7 +62,7 @@ Treat this as a menu of categories to *consider*, not a checklist to *satisfy*. 
 - When you mock something, assert **what was passed to it**, not just that it was called.
 - Assert outputs, not internals.
 
-Shape sketch:
+Shape sketch — structure only. The assertion helpers, fixtures, and exception types below are illustrative; take the real ones from the project docs you read in step 2.
 
 ```python
 class TestCreateDrawdown:
@@ -78,7 +84,7 @@ class TestCreateDrawdown:
 - Assert response shape at each step, not just status code.
 - Don't re-cover logic that unit tests already own — view tests validate HTTP wiring and response shape.
 
-Shape sketch:
+Shape sketch — structure only, same caveat as above.
 
 ```python
 def test_bank_account_flow(client, tc, lp_a, mock_increase_list_valid_us_routing_numbers):
@@ -92,14 +98,6 @@ def test_bank_account_flow(client, tc, lp_a, mock_increase_list_valid_us_routing
     response = client.get(f"/v1/investment_profile_bank_accounts/{account_id}", headers=headers)
     tc.assertEqual(response.get_json()["bank_name"], "Chase")
 ```
-
-### Canonical examples in this codebase
-
-When working in `cash-flow-portal-backend`, read these before writing:
-
-- Service unit test shape: `investment_management/tests/services/capital_call_draw_down/test_capital_call_draw_down_service.py`
-- View/integration test shape: `investment_management/tests/views/investment_profile_bank_account/test_investment_profile_bank_account.py`
-- Mocking at the service import path: `investment_management/tests/services/banking/banking_webhooks/test_banking_service.py`
 
 ## Naming
 
@@ -208,7 +206,7 @@ class TestCreate:
         result = make_accounting_service(deal_a).create(...)
 ```
 
-Why it matters: helpers in test files bypass fixture teardown, scoping, and discoverability. Always check the nearest `conftest.py` for existing factory fixtures before writing any helper. If you need one that doesn't exist, add it to `conftest.py`.
+Why it matters: helpers in test files bypass fixture teardown, scoping, and discoverability. Always check the project's shared fixture module for an existing factory before writing any helper. If you need one that doesn't exist, add it there.
 
 ## Running your tests
 
@@ -216,7 +214,9 @@ Don't run the tests yourself inline. Once written, dispatch a `general-purpose` 
 
 On failure, decide whether the *test* or the *code* is wrong. Fix the test; if the code looks wrong, report it back to the caller rather than reshaping the test around a bug. Never weaken or delete an assertion to get green.
 
-Never run tests concurrently with any other test run — not just other test executions, but forks, background bash, or parallel sessions too. Many projects share one test DB with commit-persisted fixtures (no per-test rollback), so concurrent runs corrupt shared state and throw spurious failures (e.g. `IntegrityError`) that look like real bugs but aren't.
+Never run tests concurrently with any other test run — not just other test executions, but forks, background bash, or parallel sessions too. Concurrent runs corrupt shared state and throw spurious failures that look like real bugs but aren't. Assume this is unsafe unless the project documents otherwise.
+
+If a run fails on infrastructure rather than assertions (stale schema, missing DB, unreachable service), the project docs own the recovery procedure. Follow it; don't improvise a workaround.
 
 ## When you're done
 

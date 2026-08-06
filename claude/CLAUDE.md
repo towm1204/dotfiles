@@ -29,9 +29,10 @@ Which agent does which job. One line per job.
 |---|---|---|
 | **CRITICAL** Codebase search: Grep, Glob, content search, finding files | `Explore`, `model: "haiku"` | Never grep or glob directly. Pass what to find plus the thoroughness level |
 | Running tests | `general-purpose`, `model: "haiku"` | Never inline. Only one test run in flight anywhere: no parallel runners, no forks, no background bash |
-| Writing or adjusting tests (unit, service, integration, view, endpoint) | `test-writer` | Never more than one at a time. Never write or edit tests inline |
+| Writing or adjusting tests (unit, service, integration, view, endpoint) | `test-writer` | Never more than one at a time. Never write or edit tests inline. Works in any repo — it reads that project's test docs for syntax, fixtures, and tooling |
 | Menial edits: bulk rename, formatting, boilerplate, find-replace | `general-purpose`, `model: "haiku"` | Absolute paths plus explicit acceptance criteria (fresh agent has zero context) |
-| Alembic migration review (cash-flow-portal-backend only) | `migration-reviewer` (`~/.claude/agents/migration-reviewer.md`) | After any new or modified migration file, before considering the work done |
+
+Repo-specific agents live in that repo's `.claude/agents/` and are triggered by that repo's CLAUDE.md, not this table.
 
 ## Notes
 
