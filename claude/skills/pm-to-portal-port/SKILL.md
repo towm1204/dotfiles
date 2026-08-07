@@ -16,7 +16,7 @@ The same instinct that burns the user on backend ports applies here: don't treat
 3. **Mirror PM's file tree 1:1** under the equivalent `portal/src/property_management/...` path (see "File structure").
 4. **Replicate PM's slice/thunk/component shape exactly**, applying only portal's established integration seams (see "Warranted additions").
 5. **Flag genuine gaps** — a PM dependency, endpoint, or field that doesn't exist in portal yet (see "Unavoidable gaps").
-6. **Validate** — build (see "Validation").
+6. **Validate** — typecheck (see "Validation").
 
 Delegate per the user's global rules: any codebase search → `Explore` (haiku).
 
@@ -136,12 +136,10 @@ The only divergences, each mapping to a bucket above: `deal` prop instead of rou
 **Caution — a divergence that should NOT be treated as a template:** the ported `FormSectionHeader` component in portal dropped PM's `layout` prop and `useIsMobile()` responsive switch, and inlined `styles.ts` into `index.tsx`. That doesn't map to any of the five warranted buckets above — treat it as an existing exception, not the model. Default to preserving PM's props and file split unless you have an equally concrete, statable portal-specific reason.
 
 ## Validation
-
-- No test suite exists for either package — build is the validation gate (per this repo's `CLAUDE.md`):
   ```bash
-  CI=false REACT_APP_ENV=production NODE_OPTIONS=--max-old-space-size=5120 yarn build:portal
+  cd packages/portal && npx tsc --noEmit
   ```
-  (`CI=false` suppresses warnings to reduce noise.) Clean up `dist/` after validating.
+  Don't run a production build to validate.
 - Check `.claude/component-conventions.md` before implementing any common UI pattern (tooltips, modals, etc.) — use the specified shared-library component, not a raw antd/ad hoc one, per this repo's `CLAUDE.md`.
 
 ## Closing summary to the user

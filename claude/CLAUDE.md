@@ -9,6 +9,7 @@
 - Multi-line comments: fuller sentences, still concise
 - Comment sparingly — most lines need none. When you do, explain why, not what.
 - Use sentence case for UI copies — no Title Case
+- **Helpers**: don't extract one unless it earns it. Reuse (2+ call sites), or genuine abstraction / encapsulation: a boundary worth naming (transaction, error handling, permission, recursion). Otherwise inline.
 
 ## Planning & Changes
 - **Zoom out first**: before planning any change, understand how the affected area fits into the broader system. Do not skip this.
@@ -32,15 +33,14 @@ Which agent does which job. One line per job.
 | Writing or adjusting tests (unit, service, integration, view, endpoint) | `test-writer` | Never more than one at a time. Never write or edit tests inline. Works in any repo — it reads that project's test docs for syntax, fixtures, and tooling |
 | Menial edits: bulk rename, formatting, boilerplate, find-replace | `general-purpose`, `model: "haiku"` | Absolute paths plus explicit acceptance criteria (fresh agent has zero context) |
 
-Repo-specific agents live in that repo's `.claude/agents/` and are triggered by that repo's CLAUDE.md, not this table.
-
 ## Notes
 
 Notes live at `~/.claude/notes/{org}/{repo}/{slug}.md`. Domain/topic documentation written for AI consumption — architecture, system maps, side effects, implicit dependencies.
 Use `/note` to look up, `/grok` to write or update.
 
 ## Git & PRs
-- **Don't create commits or PRs unless explicitly asked** — not even after finishing a task
+- **Don't change git state unless explicitly asked** (commit, push, checkout, branch, merge, rebase, reset, stash), not even after finishing a task. Reading is always fine: `status`, `log`, `diff`, `grep`
+- **Code not in the tree**: say which branch has it and stop. Don't switch or merge to reach it
 - **Branch naming**: `tow/short-change-name`
 - **Commit messages**: single line only, no body
 - **PR descriptions**: single short bullet preferred. Don't over-describe but don't use "TSIA" either.
