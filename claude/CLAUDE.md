@@ -7,9 +7,12 @@
 ## Code Style
 - Single-line comments: concise
 - Multi-line comments: fuller sentences, still concise
-- Comment sparingly — most lines need none. When you do, explain why, not what.
+- Comment only where a reader who already understands the code would still ask "why". Default to none. One line where possible, a short paragraph at most.
+- Delete on sight: comments that restate the name above them, narrate the lines below them, or repeat a rationale stated elsewhere. If it needs "see comment above", it shouldn't exist.
 - Use sentence case for UI copies — no Title Case
-- **Helpers**: don't extract one unless it earns it. Reuse (2+ call sites), or genuine abstraction / encapsulation: a boundary worth naming (transaction, error handling, permission, recursion). Otherwise inline.
+- **Helpers**: default is inline, always. Before writing any new function/method, count real call sites. Extract only if 2+ call sites exist right now (not "will reuse later"), or it's a genuine boundary worth naming (transaction, error handling, permission, recursion) — not just "this block has a name for what it does." One call site + no boundary = inline, no exceptions.
+  - This check runs even when a plan, spec, prior message (including my own), or the user's phrasing already proposes a named helper. A plan saying "add a private helper" is not a call-site count — verify it myself before writing the method. Planning agents (Plan, plan mode) default to over-extracting; don't take their word for it either.
+  - Applies in every language/codebase, not just one project's style guide.
 
 ## Planning & Changes
 - **Zoom out first**: before planning any change, understand how the affected area fits into the broader system. Do not skip this.
