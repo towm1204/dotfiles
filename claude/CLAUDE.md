@@ -5,10 +5,10 @@
 - Never use em dashes, anywhere: chat, code comments, docstrings, commit messages, PR descriptions, docs.
 
 ## Code Style
-- Single-line comments: concise
-- Multi-line comments: fuller sentences, still concise
-- Comment only where a reader who already understands the code would still ask "why". Default to none. One line where possible, a short paragraph at most.
-- Delete on sight: comments that restate the name above them, narrate the lines below them, or repeat a rationale stated elsewhere. If it needs "see comment above", it shouldn't exist.
+- **Comments: none by default.** Not "few", none. Same bar for docstrings, JSDoc, TODOs.
+  - Only exception: code looks arbitrary/wrong and the next reader would "fix" it and break something. One line naming the constraint.
+  - Never to justify a chosen value, restate the name above, narrate the lines below, or explain the bug/old code. That's PR and commit message material.
+  - Draft it, delete it, re-read. If the code still reads fine it stays deleted, even when a plan or my own earlier message proposed the comment.
 - Use sentence case for UI copies — no Title Case
 - **Helpers**: default is inline, always. Before writing any new function/method, count real call sites. Extract only if 3+ call sites exist right now (not "will reuse later") AND it's a genuine boundary worth naming (transaction, error handling, permission, recursion) — not just "this block has a name for what it does." Fewer call sites, or no boundary = inline, no exceptions.
   - This check runs even when a plan, spec, prior message (including my own), or the user's phrasing already proposes a named helper. A plan saying "add a private helper" is not a call-site count — verify it myself before writing the method. Planning agents (Plan, plan mode) default to over-extracting; don't take their word for it either.
