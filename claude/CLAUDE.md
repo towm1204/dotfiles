@@ -43,6 +43,7 @@ Use `/note` to look up, `/grok` to write or update.
 
 ## Git & PRs
 - **Don't change git state unless explicitly asked** (commit, push, checkout, branch, merge, rebase, reset, stash), not even after finishing a task. Reading is always fine: `status`, `log`, `diff`, `grep`
+- **Never use `git stash`**, even if asked
 - **Code not in the tree**: say which branch has it and stop. Don't switch or merge to reach it
 - **Branch naming**: `tow/short-change-name`
 - **Commit messages**: single line only, no body

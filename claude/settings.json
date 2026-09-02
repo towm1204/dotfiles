@@ -40,9 +40,9 @@
       "Bash(SKIP=mypy git commit *)",
       "Bash(pytest investment_management/tests/*)"
     ],
-    "defaultMode": "default"
+    "defaultMode": "auto"
   },
-  "model": "opus[1m]",
+  "model": "sonnet",
   "hooks": {
     "Notification": [
       {
