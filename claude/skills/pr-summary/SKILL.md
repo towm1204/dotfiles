@@ -19,18 +19,19 @@ description: >
 ## Output format
 
 - Lead with what changed, not how
-- One short sentence per bullet — no colon-separated sub-lists, no parentheticals
+- One short fragment per bullet — imperative mood, present tense verb ("Merge X into Y", "Fix Z to use A instead of B"), not past tense ("Added", "Fixed")
+- Sacrifice grammar for brevity: drop articles and filler words where the meaning stays clear ("tenant decorator" not "the tenant decorator")
+- No colon-separated sub-lists, no parentheticals
 - Skip function/prop/field names and internal wiring unless needed for clarity
 - No header, no preamble
 - Bigger diff = more compression, not more bullets
 
 ## Example
 
-- Added `last_tax_info_updated` to all investment profile models, with change-log tracking for updates.
-- Backfill script + scheduled task to populate it from existing history.
-- Tests for the backfill and new service method.
+- Merge and simplify tenant decorator into `tenancy_required` decorator. Reading tenancy_id from path, query, view_as_tenant param
+- Fix dwolla endpoints to use tenant_profile_id instead of just user_id
 
-Not this (too granular — splits one change into its parts):
+Not this (too granular — splits one change into its parts, past tense, over-explained):
 - Added migration for `last_tax_info_updated`
 - Added field to InvestmentProfileEntity
 - Added field to InvestmentProfileIndividual

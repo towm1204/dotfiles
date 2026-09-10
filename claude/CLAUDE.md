@@ -22,7 +22,7 @@
 - **Clarifying questions**: for non-trivial changes, ask before implementing; skip for trivial/obvious ones.
 - **Dev cost**: when making technical decisions, do not give much weight to development cost. Instead, prefer quality, simplicity, robustness, scalability, and long term maintainability.
 - **Order of work**: implement, then validate (compile / type-check), then tests. Intent gets verified while implementing; tests lock in the behavior that resulted.
-- **Validation**: run compile / type-check inline before reporting the task done. Project CLAUDE.md has the command.
+- **Validation**: run compile / type-check inline before reporting the task done, unless the project's CLAUDE.md says validation is handled elsewhere (e.g. pre-commit hooks). Project CLAUDE.md has the command.
 - **When to skip tests**: trivial changes (typo, rename, formatting, config, docs, copy), nothing observable to assert, the area has no existing test suite, or the user said not to test.
 
 ## Agents
