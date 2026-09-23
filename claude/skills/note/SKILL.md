@@ -1,6 +1,6 @@
 ---
 name: note
-description: Find notes for the current repository — list all or search by keyword. Use `/grok` to create or update a note.
+description: Find notes: list all or search by keyword. Use `/grok` to create or update a note.
 argument-hint: [query]
 ---
 
@@ -8,7 +8,7 @@ argument-hint: [query]
 
 # Note Skill
 
-Notes are stored at `~/.claude/notes/{org}/{repo}/{slug}.md` — org/repo derived from git remote.
+Notes are stored flat at `~/.claude/notes/{slug}.md`. Slugs may carry a scope prefix (`fe-`, `sso-`); unprefixed means backend, general, or cross-cutting.
 
 ## Step 1: Parse argument
 
@@ -20,7 +20,7 @@ Notes are stored at `~/.claude/notes/{org}/{repo}/{slug}.md` — org/repo derive
 ~/.claude/skills/note/scripts/note-list.sh
 ```
 
-Returns tab-separated `<slug>\t<org/repo>\t<path>\t<title>` per line.
+Returns tab-separated `<slug>\t<path>\t<title>` per line.
 Display as a readable list with slug and title. **Always ask: "Want me to read any of these?"**
 If empty: "No notes found" and suggest `/grok` to create one.
 

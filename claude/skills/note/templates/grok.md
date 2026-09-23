@@ -1,6 +1,5 @@
 # {title}
 
-**Repo**: {org}/{repo}  
 **Date**: {date}
 
 ## Summary

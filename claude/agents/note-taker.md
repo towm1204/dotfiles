@@ -19,7 +19,7 @@ status=$(echo "$result" | cut -f1)
 note_path=$(echo "$result" | cut -f2)
 ```
 
-- `new`: read `~/.claude/skills/note/templates/grok.md`, replace `{title}`, `{org}`, `{repo}`, `{date}` (YYYY-MM-DD), write fully populated note to `note_path`
+- `new`: read `~/.claude/skills/note/templates/grok.md`, replace `{title}` and `{date}` (YYYY-MM-DD), write fully populated note to `note_path`
 - `found`: **before writing anything**, audit the existing note — remove stale, inaccurate, or superseded content. The goal is the current picture of the system, not an archaeological record. Then update/extend with new information.
 
 ## Step 3: Write the note

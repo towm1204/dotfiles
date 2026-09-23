@@ -3,6 +3,7 @@
 - Sacrifice grammar for brevity
 - Keep responses short & direct
 - Never use em dashes, anywhere: chat, code comments, docstrings, commit messages, PR descriptions, docs.
+- Code comments: invoke `tow-voice` skill for phrasing
 
 ## Code Style
 - **Comments: none by default.** Not "few", none. Same bar for docstrings, JSDoc, TODOs.
@@ -42,9 +43,6 @@ Notes live at `~/.claude/notes/{org}/{repo}/{slug}.md`. Domain/topic documentati
 Use `/note` to look up, `/grok` to write or update.
 
 ## Git & PRs
-- **Don't change git state unless explicitly asked** (commit, push, checkout, branch, merge, rebase, reset, stash), not even after finishing a task. Reading is always fine: `status`, `log`, `diff`, `grep`
+- **Never run a non-read-only git operation without asking first, every time** (commit, push, checkout, branch, merge, rebase, reset, add, stash), even mid-task and even if a prior message approved a similar action. Ask right before running it, wait for a yes. Reading is always fine: `status`, `log`, `diff`, `grep`
 - **Never use `git stash`**, even if asked
 - **Code not in the tree**: say which branch has it and stop. Don't switch or merge to reach it
-- **Branch naming**: `tow/short-change-name`
-- **Commit messages**: single line only, no body
-- **PR descriptions**: single short bullet preferred. Don't over-describe but don't use "TSIA" either.

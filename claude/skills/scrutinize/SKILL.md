@@ -55,6 +55,8 @@ Output one tight section per finding. Order by severity (blocker → major → n
 
 Close with a one-line verdict: ship / fix-then-ship / rework / reject — with the single biggest reason.
 
+Phrase every sentence per the `tow-voice` skill (`~/.claude/skills/tow-voice/SKILL.md`), like a review comment Tow would leave. The finding structure above stays; tow-voice governs wording inside it.
+
 ## Operating rules
 
 - **No rubber-stamps.** "LGTM" is not an output. If you genuinely find nothing, say what you traced and what you checked, so the user can judge whether your review covered the surface they cared about.

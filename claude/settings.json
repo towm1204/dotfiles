@@ -54,6 +54,18 @@
           }
         ]
       }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Agent",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/agent-cwd-guard.sh",
+            "timeout": 10
+          }
+        ]
+      }
     ]
   },
   "worktree": {

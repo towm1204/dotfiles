@@ -25,6 +25,7 @@ description: >
 - Skip function/prop/field names and internal wiring unless needed for clarity
 - No header, no preamble
 - Bigger diff = more compression, not more bullets
+- Phrasing follows the `tow-voice` skill (`~/.claude/skills/tow-voice/SKILL.md`). This file wins where the two conflict
 
 ## Example
 

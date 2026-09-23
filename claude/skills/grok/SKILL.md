@@ -23,7 +23,7 @@ Display as a numbered list (`1. slug — title`), with a final option: **N. New 
 ## Step 3: Resolve destination
 
 - **Existing selected**: use that slug. Pass slug + context to note-taker agent.
-- **New selected**: ask "What should I file this under?" — use their answer as the slug. Pass slug + context to note-taker agent.
+- **New selected**: ask "What should I file this under?" and use their answer as the slug. If the note is frontend-specific, suggest an `fe-` prefix (`sso-` for SSO); leave it unprefixed for backend, general, or cross-cutting notes. The user's answer wins. Pass slug + context to note-taker agent.
 
 ## Step 4: Invoke note-taker agent
 

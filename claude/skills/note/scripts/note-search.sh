@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Usage: note-search.sh <query>
-# Case-insensitive search across slug (filename) and H1 title for current repo.
-# Output tab-separated: slug<TAB>path<TAB>title
+# Case-insensitive match across slug, H1 title, and Summary section.
+# Outputs tab-separated: slug  path  title
 
 set -euo pipefail
 
@@ -12,23 +12,7 @@ if [[ -z "$QUERY" ]]; then
   exit 1
 fi
 
-REMOTE_URL=$(git remote get-url origin 2>/dev/null) || {
-  echo "No git remote found" >&2
-  exit 1
-}
-
-if [[ "$REMOTE_URL" =~ ^git@[^:]+:([^/]+)/([^/.]+)(\.git)?$ ]]; then
-  ORG="${BASH_REMATCH[1]}"
-  REPO="${BASH_REMATCH[2]}"
-elif [[ "$REMOTE_URL" =~ ^https?://[^/]+/([^/]+)/([^/.]+)(\.git)?$ ]]; then
-  ORG="${BASH_REMATCH[1]}"
-  REPO="${BASH_REMATCH[2]}"
-else
-  echo "Could not parse org/repo from remote: $REMOTE_URL" >&2
-  exit 1
-fi
-
-NOTES_DIR="${HOME}/.claude/notes/${ORG}/${REPO}"
+NOTES_DIR="${HOME}/.claude/notes"
 
 [[ -d "$NOTES_DIR" ]] || exit 0
 
