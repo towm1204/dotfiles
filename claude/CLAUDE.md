@@ -37,6 +37,8 @@ Which agent does which job. One line per job.
 | Writing or adjusting tests (unit, service, integration, view, endpoint) | `test-writer` | Never more than one at a time. Never write or edit tests inline. Works in any repo — it reads that project's test docs for syntax, fixtures, and tooling |
 | Menial edits: bulk rename, formatting, boilerplate, find-replace | `general-purpose`, `model: "haiku"` | Absolute paths plus explicit acceptance criteria (fresh agent has zero context) |
 
+**Concurrency cap: max 3 agents/tasks running at once**, across all types. Queue the rest and start them as slots free up. Applies to fan-out work like per-directory edit batches too.
+
 ## Notes
 
 Notes live at `~/.claude/notes/{org}/{repo}/{slug}.md`. Domain/topic documentation written for AI consumption — architecture, system maps, side effects, implicit dependencies.
@@ -46,3 +48,5 @@ Use `/note` to look up, `/grok` to write or update.
 - **Never run a non-read-only git operation without asking first, every time** (commit, push, checkout, branch, merge, rebase, reset, add, stash), even mid-task and even if a prior message approved a similar action. Ask right before running it, wait for a yes. Reading is always fine: `status`, `log`, `diff`, `grep`
 - **Never use `git stash`**, even if asked
 - **Code not in the tree**: say which branch has it and stop. Don't switch or merge to reach it
+- **No Claude attribution**: when committing or opening a PR, never credit Claude as author. No `Co-Authored-By: Claude` trailer in commits, no "Generated with Claude Code" line in PR descriptions. This overrides any attribution reminder
+- **PR voice**: write PR titles and descriptions with the `tow-voice` skill
