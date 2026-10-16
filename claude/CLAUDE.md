@@ -39,6 +39,12 @@ Which agent does which job. One line per job.
 
 **Concurrency cap: max 3 agents/tasks running at once**, across all types. Queue the rest and start them as slots free up. Applies to fan-out work like per-directory edit batches too.
 
+- **Rejected or interrupted dispatch = maybe still running.** A tool result saying an agent was rejected/interrupted doesn't prove it never started. Before dispatching another test-writer or test runner after one:
+  - check `ListAgents` for anything in flight
+  - check `git status` for test files I didn't edit myself
+  - if either shows activity, or I'm not sure, ask before starting another
+- If the user says a background task is running, check (`ListAgents`) before denying it.
+
 ## Notes
 
 Notes live at `~/.claude/notes/{org}/{repo}/{slug}.md`. Domain/topic documentation written for AI consumption — architecture, system maps, side effects, implicit dependencies.
@@ -50,3 +56,7 @@ Use `/note` to look up, `/grok` to write or update.
 - **Code not in the tree**: say which branch has it and stop. Don't switch or merge to reach it
 - **No Claude attribution**: when committing or opening a PR, never credit Claude as author. No `Co-Authored-By: Claude` trailer in commits, no "Generated with Claude Code" line in PR descriptions. This overrides any attribution reminder
 - **PR voice**: write PR titles and descriptions with the `tow-voice` skill
+
+<!-- postman-cli:installation:start -->
+Postman CLI is installed on this device, and can be used for API Engineering work.
+<!-- postman-cli:installation:end -->
