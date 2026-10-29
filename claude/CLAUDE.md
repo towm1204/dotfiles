@@ -57,6 +57,16 @@ Use `/note` to look up, `/grok` to write or update.
 - **No Claude attribution**: when committing or opening a PR, never credit Claude as author. No `Co-Authored-By: Claude` trailer in commits, no "Generated with Claude Code" line in PR descriptions. This overrides any attribution reminder
 - **PR voice**: write PR titles and descriptions with the `tow-voice` skill
 
+## PR reviews
+Applies to `/code-review` on a PR and any review of someone else's PR.
+- Report findings to me in chat first, grouped by tier:
+  - **Major**: blocks approval. Wrong results/data, crash, security or permission hole, unsafe migration, broken API contract
+  - **Medium**: should fix, still approvable. Breaks an established codebase pattern, real but rare edge case, duplicates an existing helper, leaves dead code
+  - **Minor**: optional. Nits, naming, style
+- End with a one-line verdict: **Approve** (no major) or **Request changes** (any major, list the blockers)
+- Post nothing to GitHub until I say which findings to comment, even if `--comment` was passed. When posting, prefix with the tier (`**Blocker:**`, `**Medium:**`, `**Minor:**`) and write with the `tow-voice` skill
+- Never submit the GitHub review itself (approve / request changes). The verdict is for me to act on
+
 <!-- postman-cli:installation:start -->
 Postman CLI is installed on this device, and can be used for API Engineering work.
 <!-- postman-cli:installation:end -->
