@@ -59,7 +59,8 @@ Use `/note` to look up, `/grok` to write or update.
 
 ## PR reviews
 Applies to `/code-review` on a PR and any review of someone else's PR.
-- Report findings to me in chat first, grouped by tier:
+- `/code-review` decides what to look for and what counts as a finding; follow it as written. This section only changes what happens to its findings afterward
+- After its findings call, also report them in chat, grouped by tier:
   - **Major**: blocks approval. Wrong results/data, crash, security or permission hole, unsafe migration, broken API contract
   - **Medium**: should fix, still approvable. Breaks an established codebase pattern, real but rare edge case, duplicates an existing helper, leaves dead code
   - **Minor**: optional. Nits, naming, style
