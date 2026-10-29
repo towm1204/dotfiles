@@ -67,7 +67,3 @@ Applies to `/code-review` on a PR and any review of someone else's PR.
 - End with a one-line verdict: **Approve** (no major) or **Request changes** (any major, list the blockers)
 - Post nothing to GitHub until I say which findings to comment, even if `--comment` was passed. When posting, prefix with the tier (`**Blocker:**`, `**Medium:**`, `**Minor:**`) and write with the `tow-voice` skill
 - Never submit the GitHub review itself (approve / request changes). The verdict is for me to act on
-
-<!-- postman-cli:installation:start -->
-Postman CLI is installed on this device, and can be used for API Engineering work.
-<!-- postman-cli:installation:end -->
