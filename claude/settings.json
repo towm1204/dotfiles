@@ -26,8 +26,6 @@
       "Bash(tsc:*)",
       "Bash(npx tsc:*)",
       "Bash(gh pr:*)",
-      "mcp__github__get_pull_request",
-      "mcp__github__get_pull_request_files",
       "Bash(REACT_APP_ENV=production NODE_OPTIONS=--max-old-space-size=5120 yarn build:portal)",
       "Bash(gh repo:*)",
       "Bash(~/.claude/skills/note/scripts/note-list.sh *)",

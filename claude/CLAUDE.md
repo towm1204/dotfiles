@@ -52,6 +52,7 @@ Use `/note` to look up, `/grok` to write or update.
 
 ## Git & PRs
 - **Never run a non-read-only git operation without asking first, every time** (commit, push, checkout, branch, merge, rebase, reset, add, stash), even mid-task and even if a prior message approved a similar action. Ask right before running it, wait for a yes. Reading is always fine: `status`, `log`, `diff`, `grep`
+  - Exception: when I invoke `/ship-in-worktree`, the git/gh ops listed in its "Pre-approved git ops" section run without asking
 - **Never use `git stash`**, even if asked
 - **Code not in the tree**: say which branch has it and stop. Don't switch or merge to reach it
 - **No Claude attribution**: when committing or opening a PR, never credit Claude as author. No `Co-Authored-By: Claude` trailer in commits, no "Generated with Claude Code" line in PR descriptions. This overrides any attribution reminder
@@ -65,5 +66,5 @@ Applies to `/code-review` on a PR and any review of someone else's PR.
   - **Medium**: should fix, still approvable. Breaks an established codebase pattern, real but rare edge case, duplicates an existing helper, leaves dead code
   - **Minor**: optional. Nits, naming, style
 - End with a one-line verdict: **Approve** (no major) or **Request changes** (any major, list the blockers)
-- Post nothing to GitHub until I say which findings to comment, even if `--comment` was passed. When posting, prefix with the tier (`**Blocker:**`, `**Medium:**`, `**Minor:**`) and write with the `tow-voice` skill
+- Post nothing to GitHub until I say which findings to comment, even if `--comment` was passed. When posting, prefix with the tier (`**Potential blocker:**`, `**Minor:**`) and write with the `tow-voice` skill. Omit `**Medium:**` as a prefix
 - Never submit the GitHub review itself (approve / request changes). The verdict is for me to act on

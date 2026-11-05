@@ -5,7 +5,15 @@ description: Implement an approved plan in throwaway git worktrees off fresh mas
 
 # Ship in worktree
 
-Git writes still need a yes each time, per CLAUDE.md. Confirm before each commit, push, and PR.
+## Pre-approved git ops
+Invoking this skill pre-approves these, no need to ask. Overrides the CLAUDE.md git confirm rule for this flow only:
+- `git fetch origin <default>`
+- `git worktree add -b tow/<slug> /Users/tow-cfp/cfp/.worktrees/<repo>-<slug> ...` (incl. stacked branch B off A inside the worktree)
+- Inside a `.worktrees/` worktree: `git add`, `git commit` (incl. `--no-verify` / `SKIP=mypy` per Commits), `git push -u origin tow/<slug>`
+- `gh pr create` for those branches
+- Cleanup: `git worktree remove <path>`, `rmdir` the empty `.worktrees` folder
+
+Anything else still needs a yes: force push, amend/rebase/reset, deleting branches, any git write in the main checkout, merging PRs, PR comments/reviews. Still show the commit message and PR title/body in chat when done.
 
 ## PR split
 - Default: one PR per repo touched.
