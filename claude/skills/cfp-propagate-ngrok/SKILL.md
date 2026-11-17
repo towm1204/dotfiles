@@ -1,5 +1,5 @@
 ---
-name: propagate-ngrok
+name: cfp-propagate-ngrok
 description: Update ngrok URLs everywhere after a restart — .flaskenv, HelloSign, Increase
 ---
 **Invoke the general-purpose agent with model: haiku to execute this skill.**
@@ -25,7 +25,7 @@ Propagate the current ngrok URL (for localhost:5001) to all places that need it.
 
 4. **Rotate Increase subscription** — read `INCREASE_API_KEY` and `INCREASE_WEBHOOK_SECRET` from `.flaskenv`, then run the script in this skill's directory:
    ```
-   python3 ~/.claude/skills/propagate-ngrok/rotate-increase-sub.py <ngrok_url> <INCREASE_API_KEY> <INCREASE_WEBHOOK_SECRET>
+   python3 ~/.claude/skills/cfp-propagate-ngrok/rotate-increase-sub.py <ngrok_url> <INCREASE_API_KEY> <INCREASE_WEBHOOK_SECRET>
    ```
 
 5. **Do NOT restart services** — tell the user to restart manually (`make stop-all && make im-start-nb`).

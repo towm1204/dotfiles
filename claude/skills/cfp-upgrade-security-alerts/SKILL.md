@@ -1,5 +1,5 @@
 ---
-name: upgrade-security-alerts
+name: cfp-upgrade-security-alerts
 description: Review GitHub Dependabot security alerts and propose dependency upgrades. Lists open alerts with target versions, breaking-change risk, and packages to skip. Waits for user confirmation before editing manifests.
 ---
 

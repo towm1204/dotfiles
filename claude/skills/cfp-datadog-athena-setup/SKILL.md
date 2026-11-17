@@ -1,6 +1,6 @@
 ---
-name: datadog-athena-setup
-description: Sets up or repairs the datadog.logs Athena table that points at the Datadog S3 log archive. Use when the user says the Athena table is missing, queries against datadog.logs are failing, or they want to ensure the table is ready to query. Trigger on /datadog-athena-setup and proactively whenever a query against datadog.logs returns an entity-not-found error.
+name: cfp-datadog-athena-setup
+description: Sets up or repairs the datadog.logs Athena table that points at the Datadog S3 log archive. Use when the user says the Athena table is missing, queries against datadog.logs are failing, or they want to ensure the table is ready to query. Trigger on /cfp-datadog-athena-setup and proactively whenever a query against datadog.logs returns an entity-not-found error.
 ---
 
 # Datadog Logs Athena Table Setup

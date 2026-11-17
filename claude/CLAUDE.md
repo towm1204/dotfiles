@@ -54,7 +54,8 @@ Use `/note` to look up, `/grok` to write or update.
 - **Never run a non-read-only git operation without asking first, every time** (commit, push, checkout, branch, merge, rebase, reset, add, stash), even mid-task and even if a prior message approved a similar action. Ask right before running it, wait for a yes. Reading is always fine: `status`, `log`, `diff`, `grep`
   - Exception: when I invoke `/ship-in-worktree`, the git/gh ops listed in its "Pre-approved git ops" section run without asking
 - **Never use `git stash`**, even if asked
-- **Code not in the tree**: say which branch has it and stop. Don't switch or merge to reach it
+- **Code not in the tree**: say which branch has it and stop. Don't switch, merge, or worktree to reach it
+- **Worktrees only via `/ship-in-worktree`**: never create, suggest, or ask about a worktree (`git worktree add`, "do it in a worktree?") unless I invoke `/ship-in-worktree`. Applies even when the target branch isn't checked out
 - **No Claude attribution**: when committing or opening a PR, never credit Claude as author. No `Co-Authored-By: Claude` trailer in commits, no "Generated with Claude Code" line in PR descriptions. This overrides any attribution reminder
 - **PR voice**: write PR titles and descriptions with the `tow-voice` skill
 

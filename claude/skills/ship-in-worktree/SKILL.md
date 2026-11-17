@@ -15,6 +15,8 @@ Invoking this skill pre-approves these, no need to ask. Overrides the CLAUDE.md 
 
 Anything else still needs a yes: force push, amend/rebase/reset, deleting branches, any git write in the main checkout, merging PRs, PR comments/reviews. Still show the commit message and PR title/body in chat when done.
 
+PR description covers the change only. Nothing about tests, skipped hooks, mypy or other validation; those go in the chat recap.
+
 ## PR split
 - Default: one PR per repo touched.
 - If the user gave a split, use it.
@@ -34,11 +36,11 @@ Anything else still needs a yes: force push, amend/rebase/reset, deleting branch
   - `make im-check-heads`, and confirm the head matches the latest migration on origin/<default>
   - `make im-db-revision m='...'`, then `mv` the generated file into the worktree. Leave nothing behind in the main checkout.
 - Every subagent prompt starts with `cd <worktree path>` and says it can't run anything.
-- Tests get written by test-writer but not run. Say so in the PR.
+- Tests get written by test-writer but not run. Say so in chat.
 
 ## Commits
-- BE pre-commit runs fine. If mypy fails only on errors that were already there, use `SKIP=mypy` and name those files in the PR.
-- FE husky fails without node_modules, so use `--no-verify`, format by hand to prettier style, and note it in the PR.
+- BE pre-commit runs fine. If mypy fails only on errors that were already there, use `SKIP=mypy` and name those files in chat.
+- FE husky fails without node_modules, so use `--no-verify`, format by hand to prettier style, and note it in chat.
 - Re-stage after black rewrites files.
 
 ## Cleanup (after every PR exists)

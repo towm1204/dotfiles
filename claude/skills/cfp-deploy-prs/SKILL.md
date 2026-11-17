@@ -1,5 +1,5 @@
 ---
-name: deploy-prs
+name: cfp-deploy-prs
 description: Create staging and release deployment PRs
 ---
 **Invoke the general-purpose agent with model: haiku to execute this skill.**
