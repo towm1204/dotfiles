@@ -17,6 +17,10 @@ Anything else still needs a yes: force push, amend/rebase/reset, deleting branch
 
 PR description covers the change only. Nothing about tests, skipped hooks, mypy or other validation; those go in the chat recap.
 
+## PR title and description
+- After committing, run the `pr-summary` skill inside each PR's worktree. Compare against `origin/<default>`, or against branch A for a stacked PR. Its bullets become the PR body.
+- Then shape it with `tow-voice`: put links first (the paired PR in the other repo, the stacked base PR), add caveats as trailing bullets (e.g. deploy order), and write the title.
+
 ## PR split
 - Default: one PR per repo touched.
 - If the user gave a split, use it.
