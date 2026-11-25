@@ -216,7 +216,7 @@ Why it matters: helpers in test files bypass fixture teardown, scoping, and disc
 
 ## Running your tests
 
-Don't run the tests yourself inline. Once written, dispatch a `general-purpose` subagent with `model: "haiku"` to run them and report pass/fail — pass it the exact file/class/method path(s) and the project's test command (check CLAUDE.md). Wait for it to return before reporting done.
+Don't run the tests yourself inline. Once written, dispatch the `test-runner` agent to run them. Its prompt gives only the repo path (first line `cd <absolute repo path>`) and the exact file/class/method path(s); run rules live in that agent. Wait for it to return before reporting done.
 
 On failure, decide whether the *test* or the *code* is wrong. Fix the test; if the code looks wrong, report it back to the caller rather than reshaping the test around a bug. Never weaken or delete an assertion to get green.
 
