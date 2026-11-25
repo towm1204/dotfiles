@@ -11,7 +11,8 @@ Invoking this skill pre-approves these, no need to ask. Overrides the CLAUDE.md 
 - `git worktree add -b tow/<slug> /Users/tow-cfp/cfp/.worktrees/<repo>-<slug> ...` (incl. stacked branch B off A inside the worktree)
 - Inside a `.worktrees/` worktree: `git add`, `git commit` (incl. `--no-verify` / `SKIP=mypy` per Commits), `git push -u origin tow/<slug>`
 - `gh pr create` for those branches
-- Cleanup: `git worktree remove <path>`, `rmdir` the empty `.worktrees` folder
+- Existing PR branch of mine: `git worktree add <path> <existing branch>` (no `-b`), commit, plain `git push origin <branch>`
+- Cleanup: `git worktree remove <path>`
 
 Anything else still needs a yes: force push, amend/rebase/reset, deleting branches, any git write in the main checkout, merging PRs, PR comments/reviews. Still show the commit message and PR title/body in chat when done.
 
@@ -33,6 +34,7 @@ PR description covers the change only. Nothing about tests, skipped hooks, mypy 
 - Per repo: `git fetch origin <default>`, then `git worktree add -b tow/<slug> /Users/tow-cfp/cfp/.worktrees/<repo>-<slug> origin/<default>`
 - Never checkout, stash, reset or commit in the main checkout. Its branch and uncommitted changes stay exactly as they were.
 - Stacked PRs: branch B off branch A in the same worktree, PR base = A. Link A in B's description.
+- Changing an open PR of mine: worktree on its existing branch, no new branch or PR. Still no force push. Mention any PR stacked on that branch in the recap.
 
 ## Running commands
 - Nothing runs in the worktree: no pytest, yarn, tsc or app.
@@ -49,5 +51,5 @@ PR description covers the change only. Nothing about tests, skipped hooks, mypy 
 
 ## Cleanup (after every PR exists)
 - Leave the worktree first, then run `git worktree remove <path>` from the main repo dir.
-- Delete the empty `.worktrees` folder from a cwd outside it.
+- Don't `rmdir` the `.worktrees` folder, because Claude Code's safety check blocks it as a workspace dir. Leave it, or tell me to remove it.
 - Confirm `git worktree list` and the main checkout's `git status` are unchanged.

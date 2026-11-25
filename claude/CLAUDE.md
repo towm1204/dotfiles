@@ -33,7 +33,7 @@ Which agent does which job. One line per job.
 | Job | Agent | Notes |
 |---|---|---|
 | **CRITICAL** Codebase search: Grep, Glob, content search, finding files | `Explore`, `model: "haiku"` | Never grep or glob directly. Pass what to find plus the thoroughness level |
-| Running tests | `general-purpose`, `model: "haiku"` | Never inline. Only one test run in flight anywhere: no parallel runners, no forks, no background bash |
+| Running tests | `test-runner` | Never inline. Only one test run in flight anywhere. Run rules live in the agent; the prompt only gives the repo path and the files to run |
 | Writing or adjusting tests (unit, service, integration, view, endpoint) | `test-writer` | Never more than one at a time. Never write or edit tests inline. Works in any repo — it reads that project's test docs for syntax, fixtures, and tooling |
 | Menial edits: bulk rename, formatting, boilerplate, find-replace | `general-purpose`, `model: "haiku"` | Absolute paths plus explicit acceptance criteria (fresh agent has zero context) |
 

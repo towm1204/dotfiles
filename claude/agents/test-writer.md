@@ -32,16 +32,22 @@ This agent governs **what to test and how to think about coverage**. Project doc
 
 ## Coverage menu
 
-Treat this as a menu of categories to *consider*, not a checklist to *satisfy*. Skip categories that don't apply, and don't manufacture a test per branch when several branches encode the same behavior.
+Treat this as a menu of categories to *consider*, not a checklist to *satisfy*. Skip categories that don't apply.
+
+Cover every pattern, not every situation: one test per distinct code path.
+- Several branches encoding the same behavior get one test, not one each.
+- Logic shared across methods (lookup/not-found, permission check) gets tested once per class or module, not per method. The project docs may name its specific shared blocks.
+- Skip boundary twins (e.g. "equal is accepted" next to "below is rejected"). One side of a boundary is enough.
+- Skip cases another test already covers.
 
 **Unit tests:**
 
 | Category | Purpose |
 |----------|---------|
 | Happy path | Normal operation with valid input returns the expected result |
-| Error branches that encode business rules | E.g. "non-admin can't delete," "drawdown exceeds commitment" — branches a caller could plausibly hit |
-| Not-found / empty | Missing records, empty collections, unset optional fields |
-| Boundary inputs where the logic actually treats them specially | Zero, null, max value — only when the code branches on them |
+| Error branches that encode business rules | E.g. "non-admin can't delete," "drawdown exceeds commitment". Branches a caller could plausibly hit |
+| Not-found / empty | Missing records, empty collections, unset optional fields. Once per shared lookup, not per method |
+| Boundary inputs where the logic actually treats them specially | Zero, null, max value, only when the code branches on them. One side per boundary |
 
 **Integration tests** — a single sequential flow:
 
